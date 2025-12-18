@@ -81,7 +81,7 @@ void setup() {
 
   // Schritt 3: Test ob der ESP32 unter deinem ESP32 Namen und auch über seine
   // IP Adresse auf das ping command antwortet
-  Serial.println("Testen im Terminal:");
+  Serial.println("Der ESP32 is jetzt im WLAN über ping erreichbar. Testen im Terminal:");
   Serial.print("ping ");
   Serial.println(MYHOST);
   Serial.print("ping ");

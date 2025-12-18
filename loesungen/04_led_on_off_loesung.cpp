@@ -67,7 +67,8 @@ void setup() {
   });
 
   server.begin();
-  Serial.println("Webserver gestartet");
+  Serial.print("http://");
+  Serial.println(MYHOST);
 }
 
 void loop() { server.handleClient(); }

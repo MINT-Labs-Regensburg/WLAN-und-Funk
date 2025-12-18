@@ -119,8 +119,7 @@ void setup() {
   // --------------------------------------------------------------------------
 
   server.begin();
-  Serial.print(
-      "Der ESP32-Webserver ist jetzt mit dem Browser erreichbar: http://");
+  Serial.print("http://");
   Serial.println(MYHOST);
 }
 
