@@ -117,21 +117,16 @@ Wie du die RGB LED an den ESP32 anschließt, findest du hier:
 - [ESP32 und RGB-LED Steckbrett](zusatzmaterial/ESP32_RGB_bb.png)
 - [ESP32 und RGB-LED Schaltplan](zusatzmaterial/ESP32_RGB_schem.png)
 
-Du steuerst die RGN LED über den Webbrowser:
+Du steuerst die RGB LED über den Webbrowser:
 - Im Browser kannst du die Werte für Rot, Grün und Blau einstellen mit drei Schiebereglern oder Eingabefeldern.
-- Der ESP32 empfängt die Werte und steuert damit die Farben einer angeschlossenen RGB-LED.
-
-Ziel: Die Farbe der LED lässt sich live über das Handy oder den PC einstellen!
-
-Mögliche Umsetzung:
-- Drei Endpoints (z.B. /set_rgb?r=255&g=0&b=128) oder ein Webformular mit AJAX.
-- Die RGB-LED wird an drei PWM-fähige Pins des ESP32 angeschlossen.
-
-Tipp: Achte auf die richtige Beschaltung der RGB-LED (gemeinsame Anode oder Kathode) und passende Vorwiderstände.
-
-Beispiel-Lösung: [challenge_05_rgb_led_webserver.cpp](challenge_05_rgb_led_webserver.cpp)
+- Der ESP32 empfängt die Werte und steuert damit die drei Farben der RGB-LED.
 
 
+Du programmierst einen neuen Endpoint `/set_rgb`, der drei Parameter für die Farben erhält:
+
+- http://<mein_server>/set_rgb?r=255&g=0&b=128
+
+[challenge_05_rgb_led.cpp](challenge_05_rgb_led.cpp)
 
 
 ## ℹ️ Zusätzliche Informationen
