@@ -7,6 +7,7 @@ schaltet eine LED ein oder aus.
 Schritte:
 1. Kopiere als Basis deinen Code aus challenge_02_webserver_einrichten.cpp.
 2. Definiere den Pin, an dem die LED angeschlossen ist (z.B. GPIO 2).
+   Siehe Schaltplan/Breadboard zusatzmaterial\ESP32_LED_XXX
 3. Setze den Pin im setup() als OUTPUT.
 4. Erzeuge zwei neue Endpoints:
    - /led_ein  → schaltet die LED an

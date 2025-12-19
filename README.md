@@ -111,8 +111,14 @@ Die neuen Endpoints können dann vom Browser aufgerufen werden mit
 
 ## 5. Jetzt wird's bunt: RGB-LED mit dem Handy steuern
 
-In dieser Challenge steuerst du eine RGB-LED über den Webbrowser:
-- Im Browser kannst du die Werte für Rot, Grün und Blau einstellen (z.B. mit drei Schiebereglern oder Eingabefeldern).
+
+In dieser Challenge steuerst du eine RGB-LED.
+Wie du die RGB LED an den ESP32 anschließt, findest du hier:
+- [ESP32 und RGB-LED Steckbrett](zusatzmaterial/ESP32_RGB_bb.png)
+- [ESP32 und RGB-LED Schaltplan](zusatzmaterial/ESP32_RGB_schem.png)
+
+Du steuerst die RGN LED über den Webbrowser:
+- Im Browser kannst du die Werte für Rot, Grün und Blau einstellen mit drei Schiebereglern oder Eingabefeldern.
 - Der ESP32 empfängt die Werte und steuert damit die Farben einer angeschlossenen RGB-LED.
 
 Ziel: Die Farbe der LED lässt sich live über das Handy oder den PC einstellen!
