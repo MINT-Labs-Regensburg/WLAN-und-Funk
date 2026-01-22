@@ -139,3 +139,5 @@ Weitere Details und technische Informationen zum ESP32 DevKitC findest du in der
 Bei Fragen zum Kurs oder Material:  
 **MINT-Labs Regensburg**  
 🌐 [https://www.mint-labs-regensburg.de/](https://www.mint-labs-regensburg.de/)
+
+## Mehr Projekte und Anleitungen findest du [hier](https://wiki.mint-labs.de/)
