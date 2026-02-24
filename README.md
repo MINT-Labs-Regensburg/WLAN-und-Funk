@@ -5,8 +5,8 @@
 Du bist 14 Jahre alt oder älter und hast bereits Erfahrung in der Arduino-Welt? Du willst einen Microcontroller ins WLAN bringen und ihn über dein Handy steuern?   
 Dann bist du hier richtig im Kurs **Internet of Things – ESP32 im WLAN**!  
 
-In drei Stunden lernst du, wie du den ESP32 im WLAN anmeldest. 
-Du programmierst einen ESP32-Webserver, der live Temperatur- und Feuchtigkeitswerte von einem Sensor ausliest und im WLAN bereitstellt. Diese Messwerte kannst du direkt auf dem Browser deines Smartphones oder Laptops anschauen.  
+In drei Stunden lernst du, wie du mit dem ESP32 Daten aus Sensoren ausliest. Du meldest deinen ESP32 im WLAN als WebServer an. Der ESP32 schickt die Messdaten ins WLAN.
+Diese Messwerte kannst du direkt auf dem Browser deines Smartphones oder Laptops anschauen.  
 Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteuern.
 
 ---
@@ -25,19 +25,16 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 
 ## 📅 Der ESP32 im WLAN
 
+<div style="width: 300px;">
 
-![ESP32 als IoT Webserver](zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png)
+<img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" width="300">
 
 *Der ESP32 liest Werte aus einem Sensor und stellt sie im WLAN zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden*
 
+</div>
+
 ---
 
-
-
-
-
-Ein IoT-Client ist ein Gerät, das Sensordaten erfasst (z. B. Temperatur, Feuchte) und/oder Aktuatoren steuert (z. B. LEDs, Relais).  
-Der ESP32 kommuniziert über das Netzwerk mit anderen Geräten (z. B. deinem Handy oder Laptop), um Daten zu senden oder Befehle zu empfangen.
 
 ### 🛰️ ESP32: STATION- oder AP-Modus?
 Der ESP32 kann auf zwei Arten mit WLAN arbeiten:
