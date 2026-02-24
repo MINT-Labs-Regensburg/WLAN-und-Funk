@@ -1,13 +1,13 @@
-# 🌐 IoT-Internet of Things mir dem ESP32
+# 🌐 IoT-Internet of Things mit dem ESP32
 
 # Was dich erwartet
 
 Du bist 14 Jahre alt oder älter und hast bereits Erfahrung in der Arduino-Welt? Du willst einen Microcontroller ins WLAN bringen und ihn über dein Handy steuern?   
 Dann bist du hier richtig im Kurs **Internet of Things – ESP32 im WLAN**!  
 
-In drei Stunden lernst du, wie du mit dem ESP32 ein eigenes IoT-Gerät entwickelst, das Sensordaten misst und im WLAN bereitstellt.  
-Du programmierst einen ESP32-Webserver, der live Temperatur- und Feuchtigkeitswerte von einem Sensor liefert. Diese Werte kannst du direkt auf dem Browser deines Smartphones ode Laptops anschauen.  
-Außerdem wirst du LEDs und LED-Streifen über dein Smartphone fernsteuern.
+In drei Stunden lernst du, wie du den ESP32 im WLAN anmeldest. 
+Du programmierst einen ESP32-Webserver, der live Temperatur- und Feuchtigkeitswerte von einem Sensor ausliest und im WLAN bereitstellt. Diese Messwerte kannst du direkt auf dem Browser deines Smartphones oder Laptops anschauen.  
+Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteuern.
 
 ---
 
@@ -18,13 +18,24 @@ Außerdem wirst du LEDs und LED-Streifen über dein Smartphone fernsteuern.
 - LEDs, Widerstände
 - RGB LED
 - WLAN-Zugangsdaten (SSID + Passwort)
-- Laptop mit Visual Studio Code und Extension PlatformIO
+- Laptop mit Ardiono IDE oder Visual Studio Code mit Extension PlatformIO
 - Smartphone/Laptop mit Browser
 
 ---
 
+## 📅 Internet of Things IoT: Was macht der ESP32 als IoT-Client ?
 
-## 📅 Internet of Things IoT: Was macht ein IoT-Client ?
+
+![ESP32 als IoT Webserver](zusatzmaterial/ESP32%20als%20Iot%20Webserver.png)
+
+*Der ESP32 als IoT Webserver: Der ESP32 liest Werte aus einem Sensor. Es stellt sie im WLAN zur Verfügung. Die Messwerte könne auf einem Browser dargestellt werden*
+
+---
+
+
+
+
+
 Ein IoT-Client ist ein Gerät, das Sensordaten erfasst (z. B. Temperatur, Feuchte) und/oder Aktuatoren steuert (z. B. LEDs, Relais).  
 Der ESP32 kommuniziert über das Netzwerk mit anderen Geräten (z. B. deinem Handy oder Laptop), um Daten zu senden oder Befehle zu empfangen.
 
