@@ -26,7 +26,7 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 ## 📅 Der ESP32 im WLAN
 
 
-![ESP32 als IoT Webserver](zusatzmaterial/ESP32 mit Temperatursensor im WLAN.png)
+![ESP32 als IoT Webserver](zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png)
 
 *Der ESP32 liest Werte aus einem Sensor und stellt sie im WLAN zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden*
 
