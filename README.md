@@ -60,13 +60,10 @@ Dein ESP32 kann dann über seinen seine IP-Adresse angesprochen werden.
 ping 192.166.187.25
 ```
 
-<div style="width: 200px;">
-
+<table><tr><td width="200">
 <img src="assets/ping-ip.png" alt="Ping IP-Adresse" width="200">
-
-*Der FOO ESP32 im WLAN. Er kann über das Terminal per 'ping IP Adresse' angesprochen werden*
-
-</div>
+<br><em>Der FOO ESP32 im WLAN. Er kann über das Terminal per 'ping IP Adresse' angesprochen werden</em>
+</td></tr></table>
 
 ---
 
