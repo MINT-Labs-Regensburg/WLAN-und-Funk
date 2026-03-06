@@ -25,8 +25,8 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 
 ## 📅 Der ESP32 im WLAN
 
-<table><tr><td width="300">
-<img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" width="300">
+<table><tr><td width="400">
+<img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" width="400">
 <br><em>Der ESP32 liest Werte aus einem Sensor und stellt sie im WLAN zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden</em>
 </td></tr></table>
 
@@ -57,8 +57,8 @@ Dein ESP32 kann dann über seinen seine IP-Adresse angesprochen werden.
 ping 192.166.187.25
 ```
 
-<table><tr><td width="300">
-<img src="assets/ping-ip.png" alt="Ping IP-Adresse" width="300">
+<table><tr><td width="400">
+<img src="assets/ping-ip.png" alt="Ping IP-Adresse" width="400">
 <br><em>Der FOO ESP32 im WLAN. Er kann über das Terminal per 'ping IP Adresse' angesprochen werden</em>
 </td></tr></table>
 
@@ -74,8 +74,8 @@ Dein ESP32 kann dann auch über seinen Namen angesprochen werden.
 ping ESP-name.local
 ```
 
-<table><tr><td width="300">
-<img src="assets/ping-esp-name.png" alt="Ping ESP-name" width="300">
+<table><tr><td width="400">
+<img src="assets/ping-esp-name.png" alt="Ping ESP-name" width="400">
 <br><em>Der ESP32 im WLAN. Er kann über das Terminal per 'ping ESP-name' angesprochen werden</em>
 </td></tr></table>
 
@@ -103,8 +103,8 @@ Der WebServer auf dem ESP32 kann jetzt vom Browser angesprochen werden.
 http://ESP-meinname/
 ```
 
-<table><tr><td width="300">
-<img src="assets/webserver.png" alt="Webserver" width="300">
+<table><tr><td width="400">
+<img src="assets/webserver.png" alt="Webserver" width="400">
 <br><em>Der ESP32 als WebServer. Der Browser kann mit 'http://ESP-meinname/' abgefragt werden</em>
 </td></tr></table>
 
