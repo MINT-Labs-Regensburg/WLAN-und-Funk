@@ -33,11 +33,6 @@ KI-Bild (ChatGPT)
 
 </div>
 
-
-
-
-
-
 <br>
 
 ---
@@ -51,10 +46,25 @@ KI-Bild (ChatGPT)
 
 ## 📅 1. Den ESP32 mit dem WLAN verbinden
 Zunächst muss der ESP32 mit dem Netz verbunden werden.  
-Wir melden den ESP32 im WLAN an und brauchen dafür das WLAN passwort.   
-Dein ESP32 kann dann über seinen Namen oder seine IP-Adresse angesprochen werden.   
+Wir melden den ESP32 im WLAN an und brauchen dafür das WLAN passwort.
 
-[challenge_01_esp32_mit_wlan_verbinden.cpp](challenge_01_esp32_mit_wlan_verbinden.cpp)
+🎯 **Challenge 01a** zeigt, wie du deinen ESP32 mit dem WLAN verbinden kannst. 
+
+[challenge_01a_esp32_mit_wlan_verbinden.cpp](challenge_01a_esp32_mit_wlan_verbinden.cpp)  
+Dein ESP32 kann dann über seinen seine IP-Adresse angesprochen werden. 
+
+Gebe dazu in der Windows Commandline, macOS Terminal oder Linux Shell den Befehl ein:
+```bash
+ping 192.166.187.25
+```
+
+🎯 **Challenge 01b** zeigt, wie du deinem ESP32 im WLAN einen Namen gibst.
+
+[challenge_01b_esp32_mit_mdns_namen_anmelden.cpp](challenge_01b_esp32_.mit_mdns_namen_anmelden.cpp)  
+Dein ESP32 kann dann auch über seinen Namen oder seine IP-Adresse angesprochen werden.   
+```bash
+ping ESP-meinname.local
+```
 
 ---
 
@@ -65,34 +75,10 @@ Der Webserver antwortet nur mit einer einfachen Meldung `ESP32 Webserver aktiv!`
   Bespiel: Der Browser im Laptop hat  `http://esp32_name/` an den ESP32 gesendet.
 - Als Antwort sendet der Webserver eine einfache html-Webseite mit der Meldung `ESP32 Webserver aktiv!`
 
-```mermaid
-flowchart TD
-    M[Arduino main] --> S[setup einmal beim Start]
-    S --> W[WebServer server auf Port 80]
-    S --> R[server.on Route bereitstellen]
-    S --> B[server.begin Webserver starten]
-    M --> L[loop dauerhaft wiederholt]
-    L --> H[server.handleClient Client-Anfragen verarbeiten]
-
-    classDef core fill:#1f3b73,color:#ffffff,stroke:#10264d,stroke-width:1px;
-    classDef setup fill:#1f6feb,color:#ffffff,stroke:#114a99,stroke-width:1px;
-    classDef runtime fill:#d97706,color:#ffffff,stroke:#9a5a04,stroke-width:1px;
-
-    class M core;
-    class S,W,R,B setup;
-    class L,H runtime;
-```
-  
+   
 [challenge_02_webserver_einrichten.cpp](challenge_02_webserver_einrichten.cpp)
 
 ---
-
-## 📅 3. Der ESP32 misst Sensordaten und stellt sie über seinen Webserver bereit
-Jetzt füllen wir die Webseite die bisher nur mit `ESP32 Webserver aktiv!` geantwortet hat mit echten Messdaten.  
-Für die Messung wird ein Sensor, der DHT11 per I2C Bus an den ESP32 angeschlossen. Der Sensor kann die Temperatur und die Luftfeuchtigkeit messen.  
-
-
-So wird der Sensor an den ESP32 angeschlossen:
 - [ESP32 und DHT11 Steckbrett](zusatzmaterial/ESP32_DHT11_bb.png)
 - [ESP32 und DHT11 Schaltplan](zusatzmaterial/ESP32_DHT11_schem.png)
 - [DHT11 Pinout](zusatzmaterial/dht11_pinout.jpg)
