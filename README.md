@@ -64,6 +64,24 @@ Der Webserver antwortet nur mit einer einfachen Meldung `ESP32 Webserver aktiv!`
 - der Webserver 'lauscht' im WLAN, ob ein Anfrage an ihn gestellt wurde.   
   Bespiel: Der Browser im Laptop hat  `http://esp32_name/` an den ESP32 gesendet.
 - Als Antwort sendet der Webserver eine einfache html-Webseite mit der Meldung `ESP32 Webserver aktiv!`
+
+```mermaid
+flowchart TD
+    M[Arduino main] --> S[setup einmal beim Start]
+    S --> W[WebServer server auf Port 80]
+    S --> R[server.on Route bereitstellen]
+    S --> B[server.begin Webserver starten]
+    M --> L[loop dauerhaft wiederholt]
+    L --> H[server.handleClient Client-Anfragen verarbeiten]
+
+    classDef core fill:#1f3b73,color:#ffffff,stroke:#10264d,stroke-width:1px;
+    classDef setup fill:#1f6feb,color:#ffffff,stroke:#114a99,stroke-width:1px;
+    classDef runtime fill:#d97706,color:#ffffff,stroke:#9a5a04,stroke-width:1px;
+
+    class M core;
+    class S,W,R,B setup;
+    class L,H runtime;
+```
   
 [challenge_02_webserver_einrichten.cpp](challenge_02_webserver_einrichten.cpp)
 

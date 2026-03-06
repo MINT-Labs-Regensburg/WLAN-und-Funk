@@ -1,10 +1,8 @@
 /*
-Challenge 01 : ESP32 mit WLAN verbinden
-======================================
+Challenge 01a : ESP32 mit WLAN verbinden
+========================================
 Ziel:
 Schreibe ein Programm, das den ESP32 im WLAN anmeldet.
-Der ESP32 soll im WLAN unter seinem Hostnamen z.B "esp32_leonie" erreichbar
-sein.
 
 Tipp:
 Alle Programmschritte erfolgen in setup() beim Programmstart.
@@ -12,38 +10,26 @@ Alle Programmschritte erfolgen in setup() beim Programmstart.
 Schritt 1: ESP32 am WLAN Router anmelden
 ----------------------------------------
 
-- Definiere in der Datei wlan_credentials.h  MYHOST, WLAN_SSID und WLAN_PASS
-- Lade die WLAN Definitionen mit #include "../wlan_credentials.h"
+- Du brauchst die Zugangsdaten für das WLAN. 
+  - ssid="???" password="????"
 - #include <WiFi.h>
-- #include <ESPmDNS.h> Wird für die Namensvergabe MDNS gebraucht
-- #include "../wlan_credentials.h" um die WLAN Zugansdaten zu laden
-- Serial.begin(115200); Brauchts für spätere Serial.print() Befehle
-- WiFi.mode(WIFI_STA); Modus definieren. ESP32 anmelden in bestehendem WLAN als
-STATION
-- WiFi.setHostname(MYHOST); Der ESP32 bekommt den Hostnamen den du in MYHOST
-definiert hast
-- WiFi.begin(WIFI_SSID, WIFI_PASS); Starten Verbindungsaufbau mit deinen
-Zugansdaten
+- Serial.begin(115200); Braucht es für spätere Serial.print() Befehle
+- WiFi.begin(ssid, password); Starten Verbindungsaufbau mit deinen Zugansdaten
 - if (WiFi.status() =! WL_CONNECTED) In einer Schleife warten, bis die
-Verbindung hergestellt ist
-- MDNS.begin(MYHOST); Damit machst du MYHOST im WLAN bekannt
-
-- Serial.print(WiFi.localIP()); Ausgeben der vom WLAN Router zugewiesenen IP
-Adresse.
+  Verbindung hergestellt ist
+- Serial.print(WiFi.localIP()); Ausgeben der vom WLAN Router zugewiesenen IP Adresse.
 
 
 TESTEN
-Öffne den 'Seriellen Monitor'
-----------------------------------------
-- In der PlatformIO Statusleiste (unten) den Seriellen Monitor öffnen
-- print Ausgaben monitoren.
+Öffne den 'Seriellen Monitor' um die IP Adresse deines ESP32 zu sehen
+---------------------------------------------------------------------
+- Dazu in der Arduino IDE Statusleiste Tools|Serial Monitor auswählen
+- Reset Taster am ESP32 drücken. Im Seriellen Monitor siehst du die <IP Adresse> deines ESP32.
 
-Test im 'Terminal', ob der ESP32 als 'esp32_meiner' oder über seine
-IP Adresse auf das ping command antwortet
----------------------------------------------------------------------------------------
-- Öffne in PlatformIO in der Statusleiste New Terminal.
-- 'ping esp_deinname' eingeben
-- 'ping IP' eingeben
+Test im 'Terminal' des Laptops, ob der ESP32 im WLAN zu sehen ist und auf das ping command antwortet
+----------------------------------------------------------------------------------------------------
+- Öffne das Terminal deines Laptops. Unter Windows: Windows-Taste + R, dann "cmd" eingeben und Enter drücken. Unter MacOS: Spotlight Suche (Cmd + Space) öffnen, "Terminal" eingeben und Enter drücken.
+- 'ping <IP Adresse>' eingeben
 */
 
 // Jetzt gehts los. Happy coding!
