@@ -25,23 +25,18 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 
 ## 📅 Der ESP32 im WLAN
 
-<div style="width: 300px;">
+<div style="width: 400px;">
+KI-Bild (ChatGPT)
+<img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" >
 
-<img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" width="300">
-
-*Der ESP32 liest Werte aus einem Sensor und stellt sie im WLAN zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden*
+*Der ESP32 liest Werte aus einem Sensor und stellt sie im WLAN zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden* 
 
 </div>
 
----
 
 
-### 🛰️ ESP32: STATION- oder AP-Modus?
-Der ESP32 kann auf zwei Arten mit WLAN arbeiten:
-- **STATION Mode (STA):** Der ESP32 verbindet sich als Client mit deinem Heimnetzwerk (wie ein Handy oder Laptop). Er bekommt eine IP-Adresse vom Router zugewiesen und ist für alle Geräte im WLAN erreichbar. Das ist der Standard für IoT-Anwendungen.
-- **Access Point Mode (AP):** Der ESP32 eröffnet ein eigenes WLAN, mit dem sich andere Geräte direkt verbinden können. Das ist praktisch ohne Router, aber im Alltag meist weniger komfortabel.
 
-👉 **Wir nutzen im Kurs den STATION Mode!** Dein ESP32 meldet sich im Heimnetz an und ist von allen Geräten im WLAN erreichbar.
+
 
 <br>
 
@@ -136,6 +131,13 @@ Du programmierst einen neuen Endpoint `/set_rgb`, der drei Parameter für die Fa
 
 [challenge_05_rgb_led.cpp](challenge_05_rgb_led.cpp)
 
+
+### 🛰️ ESP32: STATION- oder AP-Modus?
+Der ESP32 kann auf zwei Arten mit WLAN arbeiten:
+- **STATION Mode (STA):** Der ESP32 verbindet sich als Client mit deinem Heimnetzwerk (wie ein Handy oder Laptop). Er bekommt eine IP-Adresse vom Router zugewiesen und ist für alle Geräte im WLAN erreichbar. Das ist der Standard für IoT-Anwendungen.
+- **Access Point Mode (AP):** Der ESP32 eröffnet ein eigenes WLAN, mit dem sich andere Geräte direkt verbinden können. Das ist praktisch ohne Router, aber im Alltag meist weniger komfortabel.
+
+👉 **Wir nutzen im Kurs den STATION Mode!** Dein ESP32 meldet sich im Heimnetz an und ist von allen Geräten im WLAN erreichbar.
 
 ## ℹ️ Zusätzliche Informationen
 Weitere Details und technische Informationen zum ESP32 DevKitC findest du in der offiziellen Dokumentation:  
