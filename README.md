@@ -64,7 +64,7 @@ ping 192.166.187.25
 
 <img src="assets/ping-ip.png" alt="Ping IP-Adresse" width="100">
 
-*Der ESP32 im WLAN. Er kann über das Terminal per 'ping IP Adresse' angesprochen werden*
+*Der FOO ESP32 im WLAN. Er kann über das Terminal per 'ping IP Adresse' angesprochen werden*
 
 </div>
 
