@@ -39,7 +39,7 @@ KI-Bild (ChatGPT)
 
 
 # Jetzt kann es losgehen: Der ESP32 als IoT Client - Schritt für Schritt
-1. ESP32 ist mit dem WLAN verbunden
+1. ESP32 ist mit dem WLAN verbinden
 2. ESP32 stellt einen Webserver zur Verfügung
 3. ESP32 misst Sensordaten und stellt sie über seinen Webserver bereit
 4. ESP32 empfängt Befehle und steuert Aktuatoren
@@ -48,35 +48,78 @@ KI-Bild (ChatGPT)
 Zunächst muss der ESP32 mit dem Netz verbunden werden.  
 Wir melden den ESP32 im WLAN an und brauchen dafür das WLAN passwort.
 
-🎯 **Challenge 01a** zeigt, wie du deinen ESP32 mit dem WLAN verbinden kannst. 
+---
 
-[challenge_01a_esp32_mit_wlan_verbinden.cpp](challenge_01a_esp32_mit_wlan_verbinden.cpp)  
-Dein ESP32 kann dann über seinen seine IP-Adresse angesprochen werden. 
+### 🎯 Challenge 01a Verbinde deinen ESP32 mit dem WLAN.  
+[challenge_01a_esp32_mit_wlan_verbinden.cpp](challenge_01a_esp32_mit_wlan_verbinden.cpp)   
 
-Gebe dazu in der Windows Commandline, macOS Terminal oder Linux Shell den Befehl ein:
+Dein ESP32 kann dann über seinen seine IP-Adresse angesprochen werden.
+
+💻 Öffne die Commandline (Windows), das Terminal (macOS) oder die Shell (Linux) und gebe ein:
 ```bash
 ping 192.166.187.25
 ```
 
-🎯 **Challenge 01b** zeigt, wie du deinem ESP32 im WLAN einen Namen gibst.
+<div style="width: 400px;">
+KI-Bild (ChatGPT)
+<img src="assets/ping-ip.png" alt="Ping IP-Adresse"" >
 
+*Der ESP32 im WLAN. Er kann über das Terminal per 'ping IP Adresse' angesprochen werden* 
+
+</div>
+
+---
+
+
+### 🎯 Challenge 01b: Gib deinem ESP32 im WLAN einen Namen.   
 [challenge_01b_esp32_mit_mdns_namen_anmelden.cpp](challenge_01b_esp32_.mit_mdns_namen_anmelden.cpp)  
-Dein ESP32 kann dann auch über seinen Namen oder seine IP-Adresse angesprochen werden.   
+Dein ESP32 kann dann auch über seinen Namen angesprochen werden.
+
+💻 Öffne die Commandline und gebe ein:
 ```bash
-ping ESP-meinname.local
+ping ESP-name.local
 ```
+<div style="width: 400px;">
+KI-Bild (ChatGPT)
+<img src="assets/ping-esp-name.png" alt="Ping ESP-name" >
+
+*Der ESP32 im WLAN. Er kann über das Terminal per 'ping ESP-name' angesprochen werden* 
+
+</div>
 
 ---
 
 ## 📅 2. Der ESP32 stellt einen Webserver zur Vefügung
+
+Bis jetzt kan der ESP32 nur per Commandline und Ping Befehl angesprochen werden. 
+Jetzt wollen wir den ESP32 über eine Browser wir Chrome oder Firefox über einen HTTP endpoint ansprechen.
+Dazu muss auf dem ESP32 zusätlich eine WebServer eingerichtet weden, der auf die Anfrage des Browsers antworten kann.
+
 Nachdem dein ESP32 mit dem WLAN verbunden ist, installieren wir einen einfachen Webserver auf dem ESP32.  
 Der Webserver antwortet nur mit einer einfachen Meldung `ESP32 Webserver aktiv!`.
 - der Webserver 'lauscht' im WLAN, ob ein Anfrage an ihn gestellt wurde.   
   Bespiel: Der Browser im Laptop hat  `http://esp32_name/` an den ESP32 gesendet.
 - Als Antwort sendet der Webserver eine einfache html-Webseite mit der Meldung `ESP32 Webserver aktiv!`
 
-   
+### 🎯 Challenge 03: Richte eine WebServer auf dem ESP32 ein.   
 [challenge_02_webserver_einrichten.cpp](challenge_02_webserver_einrichten.cpp)
+
+Der WebServer auf dem ESP32 kann jetzt vom Browser angesprochen werden.
+
+🌐 Öffne den Browser und gib die Adresse ein:
+```http
+http://ESP-meinname/
+```
+<div style="width: 400px;">
+KI-Bild (ChatGPT)
+<img src="assets/webserver.png" alt="Webserver" >
+
+*Der ESP32 als WebServer. Der Browser kann mit 'http://ESP-meinname/' abgefragt werden* 
+
+</div>
+
+
+
 
 ---
 - [ESP32 und DHT11 Steckbrett](zusatzmaterial/ESP32_DHT11_bb.png)
