@@ -50,7 +50,7 @@ Wir melden den ESP32 im WLAN an und brauchen dafür das WLAN passwort.
 ### 🎯 Challenge 01a Verbinde deinen ESP32 mit dem WLAN.  
 [challenge_01a_esp32_mit_wlan_verbinden.cpp](challenge_01a_esp32_mit_wlan_verbinden.cpp)   
 
-Dein ESP32 kann dann über seinen seine IP-Adresse angesprochen werden.
+Dein ESP32 kann dann über seine IP-Adresse angesprochen werden.
 
 💻 Öffne die Commandline (Windows), das Terminal (macOS) oder die Shell (Linux) und gebe ein:
 ```bash
@@ -73,6 +73,8 @@ Dein ESP32 kann dann auch über seinen Namen angesprochen werden.
 ```bash
 ping ESP-name.local
 ```
+
+**Hinweis:** Je nach Router ist der Zusatz `.local` erforderlich oder nicht.
 
 <table><tr><td width="600">
 <img src="assets/ping-esp-name.png" alt="Ping ESP-name" width="600">
@@ -109,22 +111,30 @@ http://ESP-meinname/
 </td></tr></table>
 
 
+## 📅 3. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen
+Wir schliessen einen Sensor am ESP32 an. Der Sensor misst Temperatur und Luftfeuchtigkeit. Der ESP liest den Sensor aus und stellt die Messwerte in seinem WebServer zur Verfügung.
 
 
----
+So wird der Sensor DHT11 angeschlossen:
+
 - [ESP32 und DHT11 Steckbrett](zusatzmaterial/ESP32_DHT11_bb.png)
 - [ESP32 und DHT11 Schaltplan](zusatzmaterial/ESP32_DHT11_schem.png)
 - [DHT11 Pinout](zusatzmaterial/dht11_pinout.jpg)
 
 
 
-Um die Messdaten abrufbar zu machen, programmieren wir zwei neue Endpoints:
-- http://<mein_server>/temp
-- http://<mein_server>/hum  
-  
-Wird einer dieser beiden Endpoints vom Client angefragt, liest der ESP32 zunächst den dazugehörigen Sensor-Messwert und schickt dann den Messwert an den Client zurück.
+Um die Messdaten abrufbar zu machen, programmieren wir zwei neue Endpoints für Temperatur und Luftfeuchtichkeitsmessung (Humidity)
+```http
+http://ESP-meinname/temp
+http://ESP-meinname/hum  
+```
 
-[challenge_03_dht_sensordaten_im_webserver_anzeigen.cpp](challenge_03_dht_sensordaten_im_webserver_anzeigen.cpp)
+  
+Wird einer dieser beiden Endpoints vom Browser angefragt, liest der ESP32 zunächst den dazugehörigen Sensor-Messwert aus und schickt dann den Messwert an den Client zurück.
+
+### 🎯 challenge 03: DHT Sensordaten mit dem Webserver anzeigen
+
+[Challenge_03_dht_sensordaten_im_webserver_anzeigen.cpp](challenge_03_dht_sensordaten_im_webserver_anzeigen.cpp)
 
 ---
 
@@ -179,12 +189,44 @@ Der ESP32 kann auf zwei Arten mit WLAN arbeiten:
 ## ℹ️ Zusätzliche Informationen
 Weitere Details und technische Informationen zum ESP32 DevKitC findest du in der offiziellen Dokumentation:  
 [ESP32-DevKitC Dokumentation (Espressif)](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/index.html#esp32-devkitc)
+...existing code...
 
+## Kurz-Anleitung: ESP32 zur Arduino IDE hinzufügen
+Falls gewünscht, Sprache auf deutsch umstellen in:   
+File / Preferences / Editor Language 
+
+
+1. **Arduino IDE öffnen**
+2. **Zusätzliche Boardverwalter-URLs eintragen**  
+   `Datei > Voreinstellungen > Zusätzliche Boardverwalter-URLs`  
+   URL hinzufügen:
+   `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`
+3. **ESP32-Boardpaket installieren**  
+   `Werkzeuge > Board > Boardverwalter`  
+   Nach **esp32** suchen und **"esp32 by Espressif Systems"** installieren.    
+   Warten 
+4. **Board auswählen**  
+   `Werkzeuge > Board > ESP32 Arduino`  
+   Passendes Modell wählen (z. B. **ESP32 Dev Module**).
+5. **Port auswählen**  
+   `Werkzeuge > Port` und den richtigen seriellen Port wählen.
+6. **Test-Upload**  
+   Beispiel öffnen: `Datei > Beispiele > 01.Basics > Blink`  
+   Upload starten.
+
+### Häufige Probleme
+
+- **Kein Port sichtbar:** USB-Kabel prüfen (Datenkabel), Treiber installieren, anderes USB-Port testen.
+- **Upload-Fehler:** Beim Upload ggf. **BOOT**-Taste am ESP32 gedrückt halten.
+- **Falsches Board gewählt:** Boardtyp in den Werkzeugen prüfen.
+
+...existing code...
 
 ## 📞 Kontakt
 
 Bei Fragen zum Kurs oder Material:  
 **MINT-Labs Regensburg**  
 🌐 [https://www.mint-labs-regensburg.de/](https://www.mint-labs-regensburg.de/)
+
 
 ## Mehr Projekte und Anleitungen findest du [hier](https://wiki.mint-labs.de/)

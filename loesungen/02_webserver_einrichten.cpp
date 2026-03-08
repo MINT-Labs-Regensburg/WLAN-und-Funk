@@ -13,6 +13,15 @@ const char *espname = "ESP-meiner"; // Mein ESP32 Name
 WebServer server(80);
 // -------------------------------------------------------
 
+
+// Schritt 3a: handleRoot wird von server.on("/") aufgerufen
+// -------------------------------------------------------
+void handleRoot()
+{
+  server.send(200, "text/html", "<h1>ESP32 Webserver aktiv!</h1>");
+}
+// -------------------------------------------------------
+
 void setup()
 {
   Serial.begin(115200);
@@ -42,10 +51,9 @@ void setup()
     Serial.println("FEHLER: mDNS konnte nicht gestartet werden");
   }
 
-  // Schritt 3: Einfache Webseite in server.on() zum Senden bereitstellen
+  // Schritt 3b: Wenn der Server "/" empfängt, die Funktion handleRoot aufrufen
   // --------------------------------------------------------------------
-  server.on("/", []()
-            { server.send(200, "text/html", "<h1>ESP32 Webserver aktiv!</h1>"); });
+  server.on("/", handleRoot);
   // --------------------------------------------------------------------
 
   // Schritt 4: Starte den Webserver
@@ -60,7 +68,8 @@ void setup()
 
 void loop()
 {
-  // Schritt 5: Prüfen, ob Client anfrage gesendet hat.
+  // Schritt 5: Prüfen, ob der Browser eine Anfrage gesendet hat. 
+  // Wenn ja, wird die Funktion server.on aufgerufen.
   // --------------------------------------------------
   server.handleClient();
   // --------------------------------------------------

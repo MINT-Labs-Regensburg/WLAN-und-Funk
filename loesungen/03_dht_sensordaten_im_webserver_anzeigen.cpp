@@ -1,126 +1,96 @@
-/*
-Challenge 03: DHT Sensordaten im Webserver ausgeben
-===================================================
-Ziel:
-Luftfeuchtigkeit und Temperatur mit dem Sensor DHT11 messen.
-Es werden zwei neue Endpunkte erzeugt '/temp' und '/hum'. Sie messen
-Temperatur und Luftfeuchtigkeit und senden sie an den Client.
-
-Der Sensor hat 3 Pins:
-- +5 Volt
-- GND
-- Die einzige Datenleitung der I2C Schnittstelle wird an den Pin 4 des ESP32
-angeschlossen.
-
-
-Schritte:
-1. Kopiere als Basis deinen code aus challenge_02. Damit ist dein ESP bereits
-als Webserver aktiv.
-
-Erweitere dann den Code
-2. Füge die library für den DHT11 Sensor ein
-'#include <DHT.h>'
-
-3. Erzeuge das Objekt 'dht' der Klasse DHT mit den Parametern Datenpin und
-Sensortyp
-'DHT dht(DHTPIN, DHTTYPE);'
-
-4. Starte den sensor mit 'dht.begin();'
-
-5. Erzeuge neuen Endpoint 'http://<esp32_name>/temp' mit
-'server.on("/temp", []()'
-Lies die Temperatur aus dem Sensor mit
-'float temp = dht.readTemperature();'
-und sende die Temperatur an den Client
-
-6. Erzeuge neuen Endpoint 'http://<esp32_name>/hum' mit
-'server.on("/hum", []()'
-Lies die Luftfeuchtigkeit aus dem Sensor mit
-'float hum = dht.readHumidity();'
-und sende die Luftfeuchtigkeit an den Client
-
-Teste die neuen Endpoints mit 'http://<esp32_name>/temp' und
-'http://<esp32_name>/hum'
-*/
-
-#include "../wlan_credentials.h"
-#include <ESPmDNS.h>
 #include <WiFi.h>
+#include <ESPmDNS.h>
 
-// Schritt 2: Füge include für den Sensor DHT11 ein
-// -------------------------------------------------------
-#include <DHT.h>
-// -------------------------------------------------------
+const char *ssid = "FRITZ!Box 75902";
+const char *password = "04562358016988474025";
 
-// Schritt 3: Erzeuge das Sensor Objekt 'dht' der Klasse DHT
-// ---------------------------------------------------------------------
-#define DHTPIN 4      // Pin, an dem der DHT11 angeschlossen ist
-#define DHTTYPE DHT11 // DHT 11
-DHT dht(DHTPIN, DHTTYPE);
-// ---------------------------------------------------------------------
+const char *espname = "ESP-meiner";  // Mein ESP32 Name
+
 
 #include <WebServer.h>
 WebServer server(80);
 
+// Schritt 2: Füge die library für den DHT11 Sensor ein
+// ----------------------------------------------------
+#include <DHT.h>
+
+// Schritt 3: Erzeuge das Sensor Objekt 'dht' der Klasse DHT
+// Datenpin GPIO4 und DHT Typ11
+// ---------------------------------------------------------
+DHT dht(4, DHT11);  // GPIO4, DHT Typ 11
+// ---------------------------------------------------------
+
+
+void handleRoot() {
+  server.send(200, "text/html", "<h1>ESP32 Webserver aktiv!</h1>");
+}
+
+// Schritt 5b: handleTemp wird aufgerufen bei UID "/temp"
+// -------------------------------------------------------
+void handleTemp() {
+  float temp = dht.readTemperature();
+  String html = "<p>Temperatur: " + String(temp) + " C</p>";
+  server.send(200, "text/html", html);
+}
+
+// Schritt 6b: handleHum wird aufgerufen bei UID "/hum"
+// -------------------------------------------------------
+void handleHum() {
+  float temp = dht.readHumidity();
+  String html = "<p>Liftfeuchtigkeit: " + String(temp) + " %</p>";
+  server.send(200, "text/html", html);
+}
+
+
+
 void setup() {
   Serial.begin(115200);
-  Serial.println();
+  Serial.println("+++ START +++");
 
-  // Schritt 4: Starte den sensor
+  // Schritt 4: Starte den DHT sensor
   // ----------------------------
   dht.begin();
   // ----------------------------
 
-  WiFi.mode(WIFI_STA);
-  WiFi.setHostname(MYHOST);
-  WiFi.begin(WIFI_SSID, WIFI_PASS);
-  Serial.print("Start connecting ESP32 to WLAN");
-  if (WiFi.status() != WL_CONNECTED) {
+
+  WiFi.setHostname(espname);
+
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(500);
   }
-  Serial.println();
+  Serial.println("Mit WiFi verbunden");
+  Serial.print("IP= ");
   Serial.println(WiFi.localIP());
 
-  MDNS.begin(MYHOST);
-  Serial.println(MYHOST);
+  if (MDNS.begin(espname)) {
+    Serial.print("Du kannst den ESP32 erreichen mit:  ping ");
+    Serial.print(espname);
+    Serial.println(".local");
+  } else {
+    Serial.println("FEHLER: mDNS konnte nicht gestartet werden");
+  }
 
-  Serial.println(
-      "Testen: Öffne die Windows commandline oder Unix bash und gebe ein:");
-  Serial.print("ping ");
-  Serial.println(MYHOST);
-  Serial.print("ping ");
-  Serial.println(WiFi.localIP());
+  server.on("/", handleRoot);
 
-  server.on("/", []() {
-    String html = "<h1>ESP32 Webserver aktiv!</h1>";
-    html += "<p>'/temp' zeigt die Temperatur</p>";
-    html += "<p>'/hum' zeigt die Luftfeuchtigkeit</p>";
+  // Schritt 5a: Neuer Endpoint '/temp' für die Messung der Temperatur
+  // -----------------------------------------------------------------
+  server.on("/temp", handleTemp);
 
-    server.send(200, "text/html", html);
-  });
-
-  // Schritt 5: Neuer Endpoint '/temp' liest die Temperatur und sendet sie
+  // Schritt 6a: Neuer Endpoint '/hum' für die Messung der Luftfeuchtigkeit
   // ---------------------------------------------------------------------
-  server.on("/temp", []() {
-    float temp = dht.readTemperature();
-    String html = "<p>Temperatur: " + String(temp) + " C</p>";
-    server.send(200, "text/html", html);
-  });
-  // ---------------------------------------------------------------------
+  server.on("/hum", handleHum);
 
-  // Schritt 6: Neuer Endpoint '/hum' liest die Luftfeuchtigkeit und sendet sie
-  // --------------------------------------------------------------------------
-  server.on("/hum", []() {
-    float hum = dht.readHumidity();
-    String html = "<p>Luftfeuchtigkeit: " + String(hum) + " %</p>";
-    server.send(200, "text/html", html);
-  });
-  // --------------------------------------------------------------------------
 
   server.begin();
-  Serial.print("http://");
-  Serial.println(MYHOST);
+
+  Serial.print(
+    "Der ESP32-Webserver ist jetzt mit dem Browser erreichbar: http://");
+  Serial.println(espname);
 }
 
-void loop() { server.handleClient(); }
+void loop() {
+  server.handleClient();
+}
