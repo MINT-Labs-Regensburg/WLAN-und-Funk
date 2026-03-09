@@ -18,19 +18,8 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 - LEDs, Widerstände
 - RGB LED
 - WLAN-Zugangsdaten (SSID + Passwort)
-- Laptop mit Ardiono IDE oder Visual Studio Code mit Extension PlatformIO
+- Laptop mit Ardiono IDE oder Visual Studio Code mit Extension PlatformIO. Eine Anleitung zur Installation findest du unten.
 - Smartphone/Laptop mit Browser
-
----
-
-## 📅 Der ESP32 im WLAN
-
-<table><tr><td width="600">
-<img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" width="600">
-<br><em>Der ESP32 liest Werte aus einem Sensor und stellt sie im WLAN zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden</em>
-</td></tr></table>
-
-<br>
 
 ---
 
@@ -42,80 +31,76 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 4. ESP32 empfängt Befehle und steuert Aktuatoren
 
 ## 📅 1. Den ESP32 mit dem WLAN verbinden
-Zunächst muss der ESP32 mit dem Netz verbunden werden.  
-Wir melden den ESP32 im WLAN an und brauchen dafür das WLAN passwort.
 
----
+
+<table><tr><td width="600">
+<img src="assets/ping-ip.png" alt="Ping IP-Adresse" width="600">
+<br><em>Der ESP32 meldet sich im WLAN beime Router an. Ein Laptop im selben WLAN kann dann den ESP32 mit dem Befehl 'ping IP-Adresse' ansprechen</em>
+</td></tr></table>
+
 
 ### 🎯 Challenge 01a Verbinde deinen ESP32 mit dem WLAN.  
 [challenge_01a_esp32_mit_wlan_verbinden.cpp](challenge_01a_esp32_mit_wlan_verbinden.cpp)   
 
-Dein ESP32 kann dann über seine IP-Adresse angesprochen werden.
 
-💻 Öffne die Commandline (Windows), das Terminal (macOS) oder die Shell (Linux) und gebe ein:
+
+💻 Zum Testen: Öffne die Commandline (Windows), das Terminal (macOS) oder die Shell (Linux) und gebe ein:
 ```bash
 ping 192.166.187.25
 ```
 
-<table><tr><td width="600">
-<img src="assets/ping-ip.png" alt="Ping IP-Adresse" width="600">
-<br><em>Der ESP32 im WLAN. Er kann über das Terminal per 'ping IP Adresse' angesprochen werden</em>
-</td></tr></table>
-
 ---
 
+Bisher kannst du den ESP32 nur über die umständliche IP Adresse ansprechen. Mach die Eingabe  komfortabler, indem du deinem ESP32 einen gut lesbaren Netzwerknamen zuweist.  
 
 ### 🎯 Challenge 01b: Gib deinem ESP32 im WLAN einen Namen.   
 [challenge_01b_esp32_mit_mdns_namen_anmelden.cpp](challenge_01b_esp32_.mit_mdns_namen_anmelden.cpp)  
-Dein ESP32 kann dann auch über seinen Namen angesprochen werden.
 
-💻 Öffne die Commandline und gebe ein:
+
+💻 Zum Testen: Öffne die Commandline und gebe ein:
 ```bash
 ping ESP-name.local
 ```
 
 **Hinweis:** Je nach Router ist der Zusatz `.local` erforderlich oder nicht.
 
-<table><tr><td width="600">
-<img src="assets/ping-esp-name.png" alt="Ping ESP-name" width="600">
-<br><em>Der ESP32 im WLAN. Er kann über das Terminal per 'ping ESP-name' angesprochen werden</em>
-</td></tr></table>
-
 ---
 
 ## 📅 2. Der ESP32 stellt einen Webserver zur Vefügung
 
-Bis jetzt kan der ESP32 nur per Commandline und Ping Befehl angesprochen werden. 
-Jetzt wollen wir den ESP32 über eine Browser wir Chrome oder Firefox über einen HTTP endpoint ansprechen.
-Dazu muss auf dem ESP32 zusätlich eine WebServer eingerichtet weden, der auf die Anfrage des Browsers antworten kann.
+Bis jetzt kan der ESP32 nur per Commandline und `ping` Befehl angesprochen werden.   
+Jetzt wollen wir den ESP32 über eine Browser wie  `Firefox` oder `Chrome` über seine URL ansprechen. Beispiel `http://esp-meinname/`
 
-Nachdem dein ESP32 mit dem WLAN verbunden ist, installieren wir einen einfachen Webserver auf dem ESP32.  
-Der Webserver antwortet nur mit einer einfachen Meldung `ESP32 Webserver aktiv!`.
-- der Webserver 'lauscht' im WLAN, ob ein Anfrage an ihn gestellt wurde.   
-  Bespiel: Der Browser im Laptop hat  `http://esp32_name/` an den ESP32 gesendet.
-- Als Antwort sendet der Webserver eine einfache html-Webseite mit der Meldung `ESP32 Webserver aktiv!`
+<table><tr><td width="600">
+<img src="assets/webserver.png" alt="Webserver" width="600">
+<br><em>Der ESP32 als WebServer. Der Browser auf dem PC fragt den ESP32 mit 'http://ESP-meinname/ an. Der Webserver auf dem ESP32 Antwortet mit `ESP32 Webserver aktiv` </em>
+</td></tr></table>
+
 
 ### 🎯 Challenge 03: Richte eine WebServer auf dem ESP32 ein.   
+Der ESP32 ist bereits im WLAN angemeldet. Jetzt starten wir zusätzlich einen Webserver auf dem ESP32   
 [challenge_02_webserver_einrichten.cpp](challenge_02_webserver_einrichten.cpp)
 
-Der WebServer auf dem ESP32 kann jetzt vom Browser angesprochen werden.
 
-🌐 Öffne den Browser und gib die Adresse ein:
+🌐 Test: Öffne den Browser und gib die URL ein. Mit deinem ESP Namen.
 ```http
 http://ESP-meinname/
 ```
 
+## 📅 3. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen
+
 <table><tr><td width="600">
-<img src="assets/webserver.png" alt="Webserver" width="600">
-<br><em>Der ESP32 als WebServer. Der Browser kann den ESP32 mit 'http://ESP-meinname/' abfragen</em>
+<img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" width="600">
+<br><em>Der ESP32 liest Werte aus einem Sensor und stellt sie im WLAN zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden</em>
 </td></tr></table>
 
-
-## 📅 3. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen
 Wir schliessen einen Sensor am ESP32 an. Der Sensor misst Temperatur und Luftfeuchtigkeit. Der ESP liest den Sensor aus und stellt die Messwerte in seinem WebServer zur Verfügung.
 
 
-So wird der Sensor DHT11 angeschlossen:
+So wird der Sensor DHT11 angeschlossen:   
+`+` und `-` am Sensor geht auf den ESP32 auf `5V` und `GND`  
+`OUT` am Sensor geht auf den ESP32 `GPIO4` 
+
 
 - [ESP32 und DHT11 Steckbrett](zusatzmaterial/ESP32_DHT11_bb.png)
 - [ESP32 und DHT11 Schaltplan](zusatzmaterial/ESP32_DHT11_schem.png)
@@ -130,7 +115,7 @@ http://ESP-meinname/hum
 ```
 
   
-Wird einer dieser beiden Endpoints vom Browser angefragt, liest der ESP32 zunächst den dazugehörigen Sensor-Messwert aus und schickt dann den Messwert an den Client zurück.
+Wird einer dieser beiden Endpoints vom Browser angefragt, liest der ESP32 zunächst den dazugehörigen Sensor-Messwert aus und schickt dann den Messwert an den Browser zurück.
 
 ### 🎯 challenge 03: DHT Sensordaten mit dem Webserver anzeigen
 
@@ -141,19 +126,25 @@ Wird einer dieser beiden Endpoints vom Browser angefragt, liest der ESP32 zunäc
 
 ## 4. Der ESP32 empfängt Befehle vom Client und steuert Aktuatoren
 Es geht auch in die andere Richtung:  
-Der ESP32 schaltet eine LED. Dazu wird die LED über einen Vorwiderstand mit einem ESP32-Ausgang verbunden.  
-Wichtig: Ein Vorwiderstand ist nötig, um die LED vor zu viel Strom zu schützen.   
-Wie du die LED an den ESP32 anschließt, siehst du hier
+Der ESP kann nicht nur Daten vom Sensor lesen, sondern auch Ausgänge schalten.  
+
+Der ESP32 schaltet eine LED.   
+So wird die LED angeschlossen:   
+Wir verwenden den ESP32 Ausgang `GPIO12`.     
+Über einen 220Ohm Widerstand gehen wir auf den `+` Eingang der LED (langer Anschluss Draht).   
+Der kurze LED Anschluss geht auf den ESP32 `GND`
+
 - [ESP und LED Steckbrett](zusatzmaterial/ESP32_LED_bb.png)
 - [ESP und LED Schaltplan](zusatzmaterial/ESP32_LED_schem.png)
 
-Der Laptop schickt ein Kommando an den ESP32 und der ESP32 schaltet dann einen Aktuator, zum Beispiel die Leuchtdiode.  
-Dazu programmieren wir zwei neue Endpoints `led_ein`  und `led_aus`.   
+Der Browser schickt ein Kommando an den ESP32 und der ESP32 schaltet dann einen Aktuator, zum Beispiel unsere Leuchtdiode.  
+Dazu programmieren wir zwei neue Endpoints: 
 
-Die neuen Endpoints können dann vom Browser aufgerufen werden mit
-- http://<mein_server>/led_ein
-- http://<mein_server>/led_aus
-
+```http
+http://ESP-meinname/led_ein
+http://ESP-meinname/led_aus 
+```
+### 🎯 challenge 04: LED am ESP23 mit dem Browser schalten
 [challenge_04_led_on_off.cpp](challenge_04_led_on_off.cpp)
 
 ---
@@ -189,37 +180,6 @@ Der ESP32 kann auf zwei Arten mit WLAN arbeiten:
 ## ℹ️ Zusätzliche Informationen
 Weitere Details und technische Informationen zum ESP32 DevKitC findest du in der offiziellen Dokumentation:  
 [ESP32-DevKitC Dokumentation (Espressif)](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/index.html#esp32-devkitc)
-...existing code...
-
-## Kurz-Anleitung: ESP32 zur Arduino IDE hinzufügen
-Falls gewünscht, Sprache auf deutsch umstellen in:   
-File / Preferences / Editor Language 
-
-
-1. **Arduino IDE öffnen**
-2. **Zusätzliche Boardverwalter-URLs eintragen**  
-   `Datei > Voreinstellungen > Zusätzliche Boardverwalter-URLs`  
-   URL hinzufügen:
-   `https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json`
-3. **ESP32-Boardpaket installieren**  
-   `Werkzeuge > Board > Boardverwalter`  
-   Nach **esp32** suchen und **"esp32 by Espressif Systems"** installieren.    
-   Warten 
-4. **Board auswählen**  
-   `Werkzeuge > Board > ESP32 Arduino`  
-   Passendes Modell wählen (z. B. **ESP32 Dev Module**).
-5. **Port auswählen**  
-   `Werkzeuge > Port` und den richtigen seriellen Port wählen.
-6. **Test-Upload**  
-   Beispiel öffnen: `Datei > Beispiele > 01.Basics > Blink`  
-   Upload starten.
-
-### Häufige Probleme
-
-- **Kein Port sichtbar:** USB-Kabel prüfen (Datenkabel), Treiber installieren, anderes USB-Port testen.
-- **Upload-Fehler:** Beim Upload ggf. **BOOT**-Taste am ESP32 gedrückt halten.
-- **Falsches Board gewählt:** Boardtyp in den Werkzeugen prüfen.
-
 ...existing code...
 
 ## 📞 Kontakt

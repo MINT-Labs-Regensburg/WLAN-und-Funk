@@ -1,75 +1,102 @@
-/*
-Challenge 04: LED per Webserver schalten
-========================================
-Ziel: Der ESP32 empfängt Kommandos vom Client (z.B. Laptop/Smartphone) und
-schaltet eine LED ein oder aus.
-
-Schritte:
-1. Kopiere als Basis deinen Code aus challenge_02_webserver_einrichten.cpp.
-2. Definiere den Pin, an dem die LED angeschlossen ist (z.B. GPIO 2).
-   Siehe Schaltplan/Breadboard zusatzmaterial\ESP32_LED_XXX
-3. Setze den Pin im setup() als OUTPUT.
-4. Erzeuge zwei neue Endpoints:
-   - /led_ein  → schaltet die LED an
-   - /led_aus  → schaltet die LED aus
-5. Im Handler für /led_ein: digitalWrite(LED_PIN, HIGH)
-6. Im Handler für /led_aus: digitalWrite(LED_PIN, LOW)
-7. Sende jeweils eine Bestätigung an den Client (z.B. "LED ist an" oder "LED ist
-aus").
-
-Teste die Endpoints im Browser:
-- http://<esp32_name>/led_ein
-- http://<esp32_name>/led_aus
-*/
-
-#include "../wlan_credentials.h"
-#include <ESPmDNS.h>
-#include <WebServer.h>
 #include <WiFi.h>
 
-#define LED_PIN 12
+#include <ESPmDNS.h>
+
+
+const char *ssid = "FRITZ!Box 75902";
+const char *password = "04562358016988474025";
+
+const char *espname = "ESP-meiner";  // Mein ESP32 Name
+
+// LED ist an GPIO 12 angeschlossen
+// -------------------------------------------------
+const int LEDPIN = 12;  // GPIO12, LED Pin
+// -------------------------------------------------
+
+#include <WebServer.h>
 WebServer server(80);
+
+#include <DHT.h>
+
+DHT dht(4, DHT11);  // GPIO4, DHT Typ 11
+
+void handleRoot() {
+  server.send(200, "text/html", "<h1>ESP32 Webserver aktiv!</h1>");
+}
+
+void handleTemp() {
+  float temp = dht.readTemperature();
+  String html = "<h1>Temperatur: " + String(temp) + " C</h1>";
+  server.send(200, "text/html", html);
+}
+
+void handleHum() {
+  float hum = dht.readHumidity();
+  String html = "<h1>Luftfeuchtigkeit: " + String(hum) + " %</h1>";
+  server.send(200, "text/html", html);
+}
+// Schritt 4b: handleLedEin bzw. handleLedAus wird aufgerufen bei URL '/led_ein' bzw. '/led_aus'
+// --------------------------------------------
+
+void handleLedEin() {
+  digitalWrite(LEDPIN, 1);
+  server.send(200, "text/html", "<h1>LED ist an</h1>");
+}
+
+void handleLedAus() {
+  digitalWrite(LEDPIN, 0);
+  server.send(200, "text/html", "<h1>LED ist aus</h1>");
+}
+// -------------------------------------------------
 
 void setup() {
   Serial.begin(115200);
-  pinMode(LED_PIN, OUTPUT);
-  digitalWrite(LED_PIN, LOW); // LED aus
+  Serial.println("+++ START +++");
 
-  WiFi.mode(WIFI_STA);
-  WiFi.setHostname(MYHOST);
-  WiFi.begin(WIFI_SSID, WIFI_PASS);
+  dht.begin();
+  WiFi.setHostname(espname);
+
+  WiFi.begin(ssid, password);
+
+  // Schritt 3: Setze LED Pin als OUTPUT. Wir vewenden GPIO12 als LEDPIN
+  // -------------------------------------------------
+  pinMode(LEDPIN, OUTPUT);
+  // -------------------------------------------------
+
+
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
     Serial.print(".");
+    delay(500);
   }
-  Serial.println();
+  Serial.println("Mit WiFi verbunden");
+  Serial.print("IP= ");
   Serial.println(WiFi.localIP());
 
-  MDNS.begin(MYHOST);
-  Serial.println(MYHOST);
+  if (MDNS.begin(espname)) {
+    Serial.print("Du kannst den ESP32 erreichen mit:  ping ");
+    Serial.print(espname);
+    Serial.println(".local");
+  } else {
+    Serial.println("FEHLER: mDNS konnte nicht gestartet werden");
+  }
 
-  server.on("/", []() {
-    String html = "<h1>ESP32 LED Steuerung</h1>";
-    html += "<p>mit 'http://<esp32_name>/led_ein' die LED einschalten</p>";
-    html += "<p>mit 'http://<esp32_name>/led_aus' die LED ausschalten</p>";
-    server.send(200, "text/html", html);
-  });
+  server.on("/", handleRoot);
+  server.on("/temp", handleTemp);
+  server.on("/hum", handleHum);
 
-  server.on("/led_ein", []() {
-    digitalWrite(LED_PIN, HIGH);
-    server.send(200, "text/html",
-                "<p>mit 'http://<esp32_name>/led_aus' die LED ausschalten</p>");
-  });
-
-  server.on("/led_aus", []() {
-    digitalWrite(LED_PIN, LOW);
-    server.send(200, "text/html",
-                "mit 'http://<esp32_name>/led_ein' die LED einschalten");
-  });
+  // // Schritt 4a: Neue Endpoints '/led_ein' und '/led_aus' zur Steuerung der LED
+  // -----------------------------------------------------------------
+  server.on("/led_ein", handleLedEin);
+  server.on("/led_aus", handleLedAus);
+  // -----------------------------------------------------------------
 
   server.begin();
-  Serial.print("http://");
-  Serial.println(MYHOST);
+
+  Serial.print(
+    "Der ESP32-Webserver ist jetzt mit dem Browser erreichbar: http://");
+  Serial.println(espname);
 }
 
-void loop() { server.handleClient(); }
+void loop() {
+  server.handleClient();
+}

@@ -25,19 +25,19 @@ void handleRoot() {
   server.send(200, "text/html", "<h1>ESP32 Webserver aktiv!</h1>");
 }
 
-// Schritt 5b: handleTemp wird aufgerufen bei UID "/temp"
+// Schritt 5b: handleTemp wird aufgerufen bei URL "/temp"
 // -------------------------------------------------------
 void handleTemp() {
   float temp = dht.readTemperature();
-  String html = "<p>Temperatur: " + String(temp) + " C</p>";
+  String html = "<h1>Temperatur: " + String(temp) + " C</h1>";
   server.send(200, "text/html", html);
 }
 
-// Schritt 6b: handleHum wird aufgerufen bei UID "/hum"
+// Schritt 6b: handleHum wird aufgerufen bei URL "/hum"
 // -------------------------------------------------------
 void handleHum() {
-  float temp = dht.readHumidity();
-  String html = "<p>Liftfeuchtigkeit: " + String(temp) + " %</p>";
+  float hum = dht.readHumidity();
+  String html = "<h1>Luftfeuchtigkeit: " + String(hum) + " %</h1>";
   server.send(200, "text/html", html);
 }
 
