@@ -24,7 +24,7 @@ Eventuell muss die Adafruit DHT Sensor Library über den Library Manager in der 
 
 3. Erzeuge das Objekt 'dht' der Klasse DHT mit den Parametern Datenpin und
 Sensortyp
-'DHT dht(DHTPIN, DHTTYPE);'
+'DHT dht(DHTPIN, DHTTYPE);' Beispiel: DHTPIN=4, DHTTYPE=DHT11
 
 4. Starte den sensor mit 'dht.begin();'
 

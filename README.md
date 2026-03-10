@@ -21,7 +21,6 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 - Laptop mit Ardiono IDE oder Visual Studio Code mit Extension PlatformIO. Eine Anleitung zur Installation findest du unten.
 - Smartphone/Laptop mit Browser
 
----
 
 
 # Jetzt kann es losgehen: Der ESP32 als IoT Client - Schritt für Schritt
@@ -86,12 +85,13 @@ Der ESP32 ist bereits im WLAN angemeldet. Jetzt starten wir zusätzlich einen We
 ```http
 http://ESP-meinname/
 ```
+--- 
 
 ## 📅 3. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen
 
 <table><tr><td width="600">
 <img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" width="600">
-<br><em>Der ESP32 liest Werte aus einem Sensor und stellt sie im WLAN zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden</em>
+<br><em>Der ESP32 liest Werte aus einem Sensor und stellt sie als Webserver zur Verfügung. Die Messwerte können auf einem Browser dargestellt werden</em>
 </td></tr></table>
 
 Wir schliessen einen Sensor am ESP32 an. Der Sensor misst Temperatur und Luftfeuchtigkeit. Der ESP liest den Sensor aus und stellt die Messwerte in seinem WebServer zur Verfügung.
@@ -116,6 +116,7 @@ http://ESP-meinname/hum
 
   
 Wird einer dieser beiden Endpoints vom Browser angefragt, liest der ESP32 zunächst den dazugehörigen Sensor-Messwert aus und schickt dann den Messwert an den Browser zurück.
+
 
 ### 🎯 challenge 03: DHT Sensordaten mit dem Webserver anzeigen
 
@@ -168,6 +169,22 @@ Du programmierst einen neuen Endpoint `/set_rgb`, der drei Parameter für die Fa
 - http://<mein_server>/set_rgb?r=255&g=0&b=128
 
 [challenge_05_rgb_led.cpp](challenge_05_rgb_led.cpp)
+
+
+# ESP32 Devkit
+Es gibt das ESP32 Devkit in 2 Layout Versionen:
+
+<table><tr><td width="600">
+<img src="zusatzmaterial/esp32_devkit_v1_pinout.png" alt="ESP32 DevKit v1 Pinout" width="600">
+<br><em>ESP32 DevKit v1 Pinout (2*15 Pin)</em>
+</td></tr></table>
+
+<table><tr><td width="600">
+<img src="zusatzmaterial/esp32_devkitC_v4_pinlayout.png" alt="ESP32 DevKitC v4 Pinlayout" width="600">
+<br><em>ESP32 DevKitC v3 und v4 Pinlayout (2×19 Pin)</em>
+</td></tr></table>
+
+---
 
 
 ### 🛰️ ESP32: STATION- oder AP-Modus?
