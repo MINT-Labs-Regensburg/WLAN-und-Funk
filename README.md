@@ -3,20 +3,21 @@
 ## Inhaltsangabe
 
 - [Was dich erwartet](#was-dich-erwartet)
-- [Material](#-material)
-- [Jetzt kann es losgehen: Der ESP32 als IoT Client - Schritt für Schritt](#jetzt-kann-es-losgehen-der-esp32-als-iot-client---schritt-für-schritt)
-- [1. Den ESP32 mit dem WLAN verbinden](#-1-den-esp32-mit-dem-wlan-verbinden)
-- [2. Der ESP32 stellt einen Webserver zur Vefügung](#-2-der-esp32-stellt-einen-webserver-zur-vefügung)
-- [3. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen](#-3-temperatur-und-luftfeuchtigkeit-messen-und-im-browser-anzeigen)
-- [4. Der ESP32 empfängt Befehle vom Client und steuert Aktuatoren](#4-der-esp32-empfängt-befehle-vom-client-und-steuert-aktuatoren)
-- [5. Jetzt wird's bunt: RGB-LED mit dem Handy steuern](#5-jetzt-wirds-bunt-rgb-led-mit-dem-handy-steuern)
+- [Material](#material)
+- [Der ESP32 als IoT Client](#iot-client)
+- [1. Den ESP32 mit dem WLAN verbinden](#wlan-verbinden)
+- [2. Der ESP32 stellt einen Webserver zur Verfügung](#webserver)
+- [3. Temperatur und Luftfeuchtigkeit messen](#sensoren)
+- [4. Der ESP32 steuert Aktuatoren](#aktuatoren)
+- [5. RGB-LED mit dem Handy steuern](#rgb-led)
 - [ESP32 Devkit](#esp32-devkit)
-- [ESP32: STATION- oder AP-Modus?](#️-esp32-station--oder-ap-modus)
-- [Zusätzliche Informationen](#️-zusätzliche-informationen)
-- [Kontakt](#-kontakt)
+- [Zusätzliche Informationen](#zusaetzliche-informationen)
+- [Kontakt](#kontakt)
+- [Mehr Projekte und Anleitungen](#mehr-projekte)
 
 
 
+<a id="was-dich-erwartet"></a>
 # Was dich erwartet
 
 Du bist 14 Jahre alt oder älter und hast bereits Erfahrung in der Arduino-Welt? Du willst einen Microcontroller ins WLAN bringen und ihn über dein Handy steuern?   
@@ -28,6 +29,7 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 
 ---
 
+<a id="material"></a>
 ## 🧰 Material
 - 1 × ESP32 DevKit
 - 1 × Sensor (BME280 oder DHT22)
@@ -40,12 +42,14 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 
 
 
+<a id="iot-client"></a>
 # Jetzt kann es losgehen: Der ESP32 als IoT Client - Schritt für Schritt
 1. ESP32 ist mit dem WLAN verbinden
 2. ESP32 stellt einen Webserver zur Verfügung
 3. ESP32 misst Sensordaten und stellt sie über seinen Webserver bereit
 4. ESP32 empfängt Befehle und steuert Aktuatoren
 
+<a id="wlan-verbinden"></a>
 ## 📅 1. Den ESP32 mit dem WLAN verbinden
 
 
@@ -82,6 +86,7 @@ ping ESP-name.local
 
 ---
 
+<a id="webserver"></a>
 ## 📅 2. Der ESP32 stellt einen Webserver zur Vefügung
 
 Bis jetzt kan der ESP32 nur per Commandline und `ping` Befehl angesprochen werden.   
@@ -104,6 +109,7 @@ http://ESP-meinname/
 ```
 --- 
 
+<a id="sensoren"></a>
 ## 📅 3. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen
 
 <table><tr><td width="600">
@@ -142,6 +148,7 @@ Wird einer dieser beiden Endpoints vom Browser angefragt, liest der ESP32 zunäc
 ---
 
 
+<a id="aktuatoren"></a>
 ## 4. Der ESP32 empfängt Befehle vom Client und steuert Aktuatoren
 Es geht auch in die andere Richtung:  
 Der ESP kann nicht nur Daten vom Sensor lesen, sondern auch Ausgänge schalten.  
@@ -168,6 +175,7 @@ http://ESP-meinname/led_aus
 ---
 
 
+<a id="rgb-led"></a>
 ## 5. Jetzt wird's bunt: RGB-LED mit dem Handy steuern
 
 
@@ -188,7 +196,9 @@ Du programmierst einen neuen Endpoint `/set_rgb`, der drei Parameter für die Fa
 [challenge_05_rgb_led.cpp](challenge_05_rgb_led.cpp)
 
 
-# ESP32 Devkit
+
+<a id="esp32-devkit"></a>
+### ESP32 Devkit
 Es gibt das ESP32 Devkit in 2 Layout Versionen:
 
 <table><tr><td width="600">
@@ -201,21 +211,15 @@ Es gibt das ESP32 Devkit in 2 Layout Versionen:
 <br><em>ESP32 DevKitC v3 und v4 Pinlayout (2×19 Pin)</em>
 </td></tr></table>
 
----
 
 
-### 🛰️ ESP32: STATION- oder AP-Modus?
-Der ESP32 kann auf zwei Arten mit WLAN arbeiten:
-- **STATION Mode (STA):** Der ESP32 verbindet sich als Client mit deinem Heimnetzwerk (wie ein Handy oder Laptop). Er bekommt eine IP-Adresse vom Router zugewiesen und ist für alle Geräte im WLAN erreichbar. Das ist der Standard für IoT-Anwendungen.
-- **Access Point Mode (AP):** Der ESP32 eröffnet ein eigenes WLAN, mit dem sich andere Geräte direkt verbinden können. Das ist praktisch ohne Router, aber im Alltag meist weniger komfortabel.
-
-👉 **Wir nutzen im Kurs den STATION Mode!** Dein ESP32 meldet sich im Heimnetz an und ist von allen Geräten im WLAN erreichbar.
-
+<a id="zusaetzliche-informationen"></a>
 ## ℹ️ Zusätzliche Informationen
 Weitere Details und technische Informationen zum ESP32 DevKitC findest du in der offiziellen Dokumentation:  
 [ESP32-DevKitC Dokumentation (Espressif)](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/index.html#esp32-devkitc)
 ...existing code...
 
+<a id="kontakt"></a>
 ## 📞 Kontakt
 
 Bei Fragen zum Kurs oder Material:  
@@ -223,4 +227,5 @@ Bei Fragen zum Kurs oder Material:
 🌐 [https://www.mint-labs-regensburg.de/](https://www.mint-labs-regensburg.de/)
 
 
+<a id="mehr-projekte"></a>
 ## Mehr Projekte und Anleitungen findest du [hier](https://wiki.mint-labs.de/)
