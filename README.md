@@ -1,5 +1,22 @@
 # 🌐 IoT-Internet of Things mit dem ESP32
 
+## Inhaltsangabe
+
+- [Was dich erwartet](#was-dich-erwartet)
+- [Material](#-material)
+- [Jetzt kann es losgehen: Der ESP32 als IoT Client - Schritt für Schritt](#jetzt-kann-es-losgehen-der-esp32-als-iot-client---schritt-für-schritt)
+- [1. Den ESP32 mit dem WLAN verbinden](#-1-den-esp32-mit-dem-wlan-verbinden)
+- [2. Der ESP32 stellt einen Webserver zur Vefügung](#-2-der-esp32-stellt-einen-webserver-zur-vefügung)
+- [3. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen](#-3-temperatur-und-luftfeuchtigkeit-messen-und-im-browser-anzeigen)
+- [4. Der ESP32 empfängt Befehle vom Client und steuert Aktuatoren](#4-der-esp32-empfängt-befehle-vom-client-und-steuert-aktuatoren)
+- [5. Jetzt wird's bunt: RGB-LED mit dem Handy steuern](#5-jetzt-wirds-bunt-rgb-led-mit-dem-handy-steuern)
+- [ESP32 Devkit](#esp32-devkit)
+- [ESP32: STATION- oder AP-Modus?](#️-esp32-station--oder-ap-modus)
+- [Zusätzliche Informationen](#️-zusätzliche-informationen)
+- [Kontakt](#-kontakt)
+
+
+
 # Was dich erwartet
 
 Du bist 14 Jahre alt oder älter und hast bereits Erfahrung in der Arduino-Welt? Du willst einen Microcontroller ins WLAN bringen und ihn über dein Handy steuern?   

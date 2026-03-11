@@ -15,7 +15,7 @@ Schritt 1: ESP32 am WLAN Router anmelden
 - #include <WiFi.h>
 - Serial.begin(115200); Braucht es für spätere Serial.print() Befehle
 - WiFi.begin(ssid, password); Starten Verbindungsaufbau mit deinen Zugansdaten
-- if (WiFi.status() =! WL_CONNECTED) In einer Schleife warten, bis die
+- while (WiFi.status() =! WL_CONNECTED) In einer Schleife warten, bis die
   Verbindung hergestellt ist
 - Serial.print(WiFi.localIP()); Ausgeben der vom WLAN Router zugewiesenen IP Adresse.
 

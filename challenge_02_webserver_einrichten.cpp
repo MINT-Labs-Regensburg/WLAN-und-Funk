@@ -35,6 +35,6 @@ Erweitere dann den Code
     server.handleClient()
 
 -----------------------------------------------------------------
-Test: Im Browser "http://esp-meinname/" aufrufen und die Seite "ESP32 Webserver aktiv!" sehen.
+Test: Im Browser "http://esp-meinname/" aufrufen und die Seite "ESP32 Webserver von DEINNAME aktiv!" sehen.
 -----------------------------------------------------------------
  */
