@@ -16,12 +16,15 @@ Erweitere dann den Code
    - include <WebServer.h>
    - WebServer server(80);
 
-3a. Einfache Webseite in handleRoot() bereitstellen. Wird von server.on("/") aufgerufen.
-  handleRoot() sendet die message  "ESP32 Webserver aktiv!" zurück.
+3a. Einfache Webseite in antwortRoot() bereitstellen. Wird von server.on("/") aufgerufen.
+  antwortRoot() sendet die message  "ESP32 Webserver von DEINNAME aktiv!" zurück.
+  Als HTML Antwort: 
+  server.send(200, "text/html", "<h1>ESP32 Webserver von DEINNAME aktiv!</h1>");
+
 
 3b. server.on interpretiert die Anfrage und ruft je nach URL den passenden handler auf.
-  z.B. bei  "http://esp-meinname/" für die root, also nur ein "/" am Ende der URL, die Funktion handleRoot
-    server.on("/", handleRoot);
+  z.B. bei  "http://esp-meinname/" für die root, also nur ein "/" am Ende der URL, die Funktion antwortRoot
+    server.on("/", antwortRoot);
   
 
 4. Starte den webserver in setup().

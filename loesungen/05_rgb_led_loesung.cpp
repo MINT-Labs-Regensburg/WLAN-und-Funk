@@ -29,7 +29,7 @@ void setColor(uint8_t r, uint8_t g, uint8_t b) {
 
 
 // Separater Handler für die Root-Seite
-void handleRoot() {
+void antwortRoot() {
   String html = "<h1>RGB-LED Steuerung</h1>";
 
   html += "<form action='/set_rgb' method='get'>";
@@ -76,7 +76,7 @@ void setup() {
   Serial.println(espname);
 
   // Verwende die neue Funktion als Handler für die Root-Route
-  server.on("/", handleRoot);
+  server.on("/", antwortRoot);
 
   // Verwende die neue Funktion als Handler
   server.on("/set_rgb", handleSetRgb);

@@ -14,7 +14,7 @@
    - Der Webserver vergleicht den Pfad mit den registrierten Routen aus `server.on()`
    - Der entsprechende Handler wird aufgerufen
    - Beispiele:    
-     `server.on("/", handleRoot);` → ruft `handleRoot()` auf   
+     `server.on("/", antwortRoot);` → ruft `antwortRoot()` auf   
      `server.on("LED_ON", handleLedOn);` → ruft `handleLedOn()` auf 
 
 
@@ -62,12 +62,12 @@
 
 ```cpp
 // Routen registrieren (in setup())
-server.on("/", handleRoot);        // "/" → handleRoot aufrufen
+server.on("/", antwortRoot);        // "/" → antwortRoot aufrufen
 server.on("/LED_ON", handleLedOn);   // "/LED_ON" → LED einschalten
 server.on("/LED_OFF", handleLedOff); // "/LED_OFF" → LED ausschalten
 
 // Handler-Funktionen
-void handleRoot() {
+void antwortRoot() {
   server.send(200, "text/html", "<h1>LED Steuerung</h1>");
 }
 

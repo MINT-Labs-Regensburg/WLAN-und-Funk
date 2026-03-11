@@ -20,7 +20,7 @@ WebServer server(80);
 
 DHT dht(4, DHT11);  // GPIO4, DHT Typ 11
 
-void handleRoot() {
+void antwortRoot() {
   server.send(200, "text/html", "<h1>ESP32 Webserver aktiv!</h1>");
 }
 
@@ -80,7 +80,7 @@ void setup() {
     Serial.println("FEHLER: mDNS konnte nicht gestartet werden");
   }
 
-  server.on("/", handleRoot);
+  server.on("/", antwortRoot);
   server.on("/temp", handleTemp);
   server.on("/hum", handleHum);
 

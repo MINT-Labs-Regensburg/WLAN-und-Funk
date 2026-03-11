@@ -14,11 +14,11 @@ WebServer server(80);
 // -------------------------------------------------------
 
 
-// Schritt 3a: handleRoot wird von server.on("/") aufgerufen
+// Schritt 3a: antwortRoot wird von server.on("/") aufgerufen
 // -------------------------------------------------------
-void handleRoot()
+void antwortRoot()
 {
-  server.send(200, "text/html", "<h1>ESP32 Webserver aktiv!</h1>");
+  server.send(200, "text/html", "<h1>ESP32 Webserver von DEINNAME aktiv!</h1>");
 }
 // -------------------------------------------------------
 
@@ -51,9 +51,9 @@ void setup()
     Serial.println("FEHLER: mDNS konnte nicht gestartet werden");
   }
 
-  // Schritt 3b: Wenn der Server "/" empfängt, die Funktion handleRoot aufrufen
+  // Schritt 3b: Wenn der Server "/" empfängt, die Funktion antwortRoot aufrufen
   // --------------------------------------------------------------------
-  server.on("/", handleRoot);
+  server.on("/", antwortRoot);
   // --------------------------------------------------------------------
 
   // Schritt 4: Starte den Webserver
