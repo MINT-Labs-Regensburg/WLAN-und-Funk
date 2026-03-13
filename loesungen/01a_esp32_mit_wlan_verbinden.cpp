@@ -1,7 +1,7 @@
 #include <WiFi.h>
 
-const char* ssid = "FRITZ!Box 75902";
-const char* password = "04562358016988474025";
+const char* ssid = "MINT-Labs";
+const char* password = "int3rn3tofthings";
 
 void setup() {
   Serial.begin(115200);
