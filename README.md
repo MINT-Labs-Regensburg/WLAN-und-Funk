@@ -11,6 +11,7 @@
 - [4. Der ESP32 steuert Aktuatoren](#aktuatoren)
 - [5. RGB-LED mit dem Handy steuern](#rgb-led)
 - [ESP32 Devkit](#esp32-devkit)
+- [Erweitern der Arduino IDE für den ESP32](#arduino-ide-esp32)
 - [Zusätzliche Informationen](#zusaetzliche-informationen)
 - [Kontakt](#kontakt)
 - [Mehr Projekte und Anleitungen](#mehr-projekte)
@@ -211,7 +212,9 @@ Es gibt das ESP32 Devkit in 2 Layout Versionen:
 <br><em>ESP32 DevKitC v3 und v4 Pinlayout (2×19 Pin)</em>
 </td></tr></table>
 
-
+<a id="arduino-ide-esp32"></a>
+### Erweitern der Arduino IDE für den ESP32
+https://youtu.be/RbEGBOytZzc?si=KouAGV5stZRRLF-T
 
 <a id="zusaetzliche-informationen"></a>
 ## ℹ️ Zusätzliche Informationen
