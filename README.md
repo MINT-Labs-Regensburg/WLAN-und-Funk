@@ -214,7 +214,7 @@ Es gibt das ESP32 Devkit in 2 Layout Versionen:
 
 <a id="arduino-ide-esp32"></a>
 ### Erweitern der Arduino IDE für den ESP32
-https://youtu.be/RbEGBOytZzc?si=KouAGV5stZRRLF-T
+▶️ [YouTube: Arduino IDE und ESP32](https://youtu.be/RbEGBOytZzc?si=KouAGV5stZRRLF-T)
 
 <a id="zusaetzliche-informationen"></a>
 ## ℹ️ Zusätzliche Informationen
