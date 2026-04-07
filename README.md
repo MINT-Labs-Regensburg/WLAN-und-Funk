@@ -1,4 +1,4 @@
-# 🌐 IoT-Internet of Things mit dem ESP32
+# 🌐 WLAN und Funk mit dem ESP32
 
 ## Inhaltsangabe
 
