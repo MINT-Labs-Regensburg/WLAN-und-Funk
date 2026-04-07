@@ -1,4 +1,4 @@
-# 🌐 WLAN und Funk mit dem ESP32
+# 🌐 Funk und WLAN mit Arduino
 
 ## Inhaltsangabe
 
