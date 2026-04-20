@@ -10,46 +10,21 @@ Monitor aus.
 #include <WiFi.h>
 #include <esp_now.h>
 
-// Callback wird bei empfangenen ESP-NOW Daten aufgerufen.
-void onDataRecv(const esp_now_recv_info *info, const uint8_t *data, int len) {
-  Serial.print("From: ");
-
-  // TODO: Absender-MAC ausgeben.
-  for (int i = 0; i < 6; i++) {
-    Serial.printf("%02X", info->src_addr[i]);
-    if (i < 5)
-      Serial.print(":");
-  }
-
-  Serial.print(" | Data: ");
-
-  // TODO: Nutzdaten als Text ausgeben.
-  for (int i = 0; i < len; i++) {
-    if (data[i] == '\0')
-      break;
-    Serial.print((char)data[i]);
-  }
-
-  Serial.println();
-}
+// TODO: Callback-Funktion schreiben, die bei empfangenen Daten aufgerufen wird.
+// Signatur: void onDataRecv(const esp_now_recv_info *info, const uint8_t *data, int len)
+// - Absender-MAC aus info->src_addr ausgeben
+// - Nutzdaten als Text ausgeben
 
 void setup() {
-  Serial.begin(115200);
-  WiFi.mode(WIFI_STA);
+  // TODO: Serielle Schnittstelle starten
 
-  Serial.print("My MAC: ");
-  Serial.println(WiFi.macAddress());
+  // TODO: WLAN-Modus auf Station setzen
 
-  // TODO: ESP-NOW initialisieren.
-  if (esp_now_init() != ESP_OK) {
-    Serial.println("ESP-NOW fail");
-    while (true)
-      delay(1000);
-  }
+  // TODO: Eigene MAC-Adresse ausgeben
 
-  // TODO: Empfangs-Callback registrieren.
-  esp_now_register_recv_cb(onDataRecv);
-  Serial.println("Receive ready");
+  // TODO: ESP-NOW initialisieren (esp_now_init)
+
+  // TODO: Empfangs-Callback registrieren (esp_now_register_recv_cb)
 }
 
 void loop() {

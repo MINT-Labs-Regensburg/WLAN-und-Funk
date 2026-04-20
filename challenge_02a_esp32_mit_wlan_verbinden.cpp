@@ -33,45 +33,20 @@ Test im 'Terminal' des Laptops, ob der ESP32 im WLAN zu sehen ist und auf das pi
 */
 
 // Jetzt gehts los. Happy coding!
-#include <ESPmDNS.h>
 #include <WiFi.h>
 
 #include "../wlan_credentials.h" // Laden deiner WLAN Zugangsdaten
 
 void setup() {
+  // TODO: Serielle Schnittstelle starten
 
-  Serial.begin(115200);
-  Serial.println();
+  // TODO: WLAN-Modus auf Station setzen (WiFi.mode)
 
-  // Schritt 1 : ESP32 als Station am WLAN Router anmelden
-  WiFi.mode(WIFI_STA); // Modus: ESP32 als STATION im WLAN Router
+  // TODO: Verbindung starten (WiFi.begin mit WIFI_SSID und WIFI_PASS)
 
-  WiFi.setHostname(
-      MYHOST); // Name, unter dem dein ESP32 im WLAN angemeldet wird
+  // TODO: Warten bis verbunden (while WiFi.status() != WL_CONNECTED)
 
-  WiFi.begin(WIFI_SSID, WIFI_PASS); // Anmeldung im WLAN starten
-  Serial.print("Start connecting ESP32 to WLAN");
-
-  // Warten bis der ESP32 angemeldet ist
-  if (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
-    delay(500);
-  }
-  Serial.println();
-  Serial.println(WiFi.localIP()); // Zeige IP Adresse, die dem ESP32 vom Router
-                                  // zugewiesen wurde
-
-  // Schritt 2: Namen deines ESP32 im WLAN
-  MDNS.begin(MYHOST);
-  Serial.println(MYHOST);
-
-  // Schritt 3: Test ob der ESP32 unter deinem ESP32 Namen und auch über seine
-  // IP Adresse auf das ping command antwortet
-  Serial.println("Testen im Terminal:");
-  Serial.print("ping ");
-  Serial.println(MYHOST);
-  Serial.print("ping ");
-  Serial.println(WiFi.localIP());
+  // TODO: IP-Adresse im Seriellen Monitor ausgeben (WiFi.localIP())
 }
 
 void loop() {}

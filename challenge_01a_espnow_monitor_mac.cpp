@@ -5,23 +5,20 @@ Ziel:
 Zeige die MAC-Adresse deines ESP32 im Seriellen Monitor an.
 
 Schritte:
-1. Serielle Schnittstelle starten
-2. WLAN-Modus auf Station setzen
-3. MAC-Adresse ausgeben
+1. Serielle Schnittstelle starten: Serial.begin(115200);
+2. WLAN-Modus auf Station setzen: WiFi.mode(WIFI_STA);
+3. MAC-Adresse ausgeben: Serial.println(WiFi.macAddress());
 */
 
 #include <Arduino.h>
 #include <WiFi.h>
 
 void setup() {
-  Serial.begin(115200);
+  // TODO: Serielle Schnittstelle starten
 
-  // TODO: Setze den ESP32 in den WLAN-Station-Modus.
-  WiFi.mode(WIFI_STA);
+  // TODO: WLAN-Modus auf Station setzen
 
-  // TODO: Gib die eigene MAC-Adresse im Seriellen Monitor aus.
-  Serial.print("My MAC: ");
-  Serial.println(WiFi.macAddress());
+  // TODO: MAC-Adresse im Seriellen Monitor ausgeben
 }
 
 void loop() {
