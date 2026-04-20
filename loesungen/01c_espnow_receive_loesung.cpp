@@ -30,6 +30,7 @@ void setup()
 {
     Serial.begin(115200);
     WiFi.mode(WIFI_STA);
+    WiFi.STA.begin();
     Serial.print("My MAC: ");
     Serial.println(WiFi.macAddress());
 

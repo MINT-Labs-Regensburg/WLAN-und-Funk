@@ -5,8 +5,8 @@
 // Change this to receiver MAC address.
 
 
-// 24:DC:C3:C1:DA:94
-uint8_t receiverMac[] = {0x24, 0xDC, 0xC3, 0xC1, 0xDA, 0x94};
+// A4 F0 0F 77 7E C0 
+uint8_t receiverMac[] = {0xA4, 0xF0, 0x0F, 0x77, 0x7E, 0xC0};
 
 void setup() {
   Serial.begin(115200);
