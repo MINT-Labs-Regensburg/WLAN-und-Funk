@@ -58,8 +58,8 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 ESP-NOW ist ein Funkprotokoll für ESP32/ESP8266, das **ohne WLAN-Router** funktioniert.  
 Damit können mehrere ESP-Boards direkt kurze Nachrichten austauschen, z. B. Sensorwerte oder Schaltbefehle.  
 
-<table><tr><td width="900">
-<img src="assets/espnow-direkt.png" alt="ESP-NOW Direktverbindung zwischen zwei ESP32 ohne Router" width="900">
+<table><tr><td width="600">
+<img src="assets/espnow-direkt.png" alt="ESP-NOW Direktverbindung zwischen zwei ESP32 ohne Router" width="600">
 <br><em>Zwei ESP32 tauschen Daten direkt per ESP-NOW aus. Es wird kein WLAN-Router benoetigt.</em>
 </td></tr></table>
 
