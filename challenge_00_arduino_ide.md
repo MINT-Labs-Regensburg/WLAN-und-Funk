@@ -22,3 +22,7 @@ Die Arduino IDE so einrichten, dass sie Programme für den ESP32 kompilieren und
 
 ## Hinweis
 Ohne diese Erweiterung kann die Arduino IDE keine Programme für den ESP32 kompilieren oder hochladen. Nach der Installation kannst du mit den Challenges starten!
+
+<a id="arduino-ide-esp32"></a>
+### Erweitern der Arduino IDE für den ESP32
+▶️ [YouTube: Arduino IDE und ESP32](https://youtu.be/RbEGBOytZzc?si=KouAGV5stZRRLF-T)

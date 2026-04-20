@@ -4,16 +4,14 @@
 
 - [Was dich erwartet](#was-dich-erwartet)
 - [Material](#material)
-- [00 Vorbereitung: Arduino IDE und VS Code/PlatformIO](#vorbereitung)
-- [01 ESP-NOW](#esp-now)
-- [Der ESP32 als IoT Client](#iot-client)
+- [00. Vorbereitung: Arduino IDE und VS Code/PlatformIO](#vorbereitung)
+- [01. ESP-NOW](#esp-now)
 - [02. WLAN verbinden (inkl. mDNS)](#wlan-verbinden)
 - [03. Webserver](#webserver)
 - [04. Sensoren im Browser](#sensoren)
 - [05. Aktuatoren steuern](#aktuatoren)
 - [06. RGB-LED steuern](#rgb-led)
 - [ESP32 Devkit](#esp32-devkit)
-- [Erweitern der Arduino IDE für den ESP32](#arduino-ide-esp32)
 - [Zusätzliche Informationen](#zusaetzliche-informationen)
 - [Kontakt](#kontakt)
 - [Mehr Projekte und Anleitungen](#mehr-projekte)
@@ -34,7 +32,7 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 
 <a id="material"></a>
 ## 🧰 Material
-- 1 × ESP32 DevKit
+- 1 × [ESP32 DevKit](#esp32-devkit)
 - 1 × Sensor (BME280 oder DHT22)
 - Jumperkabel, Breadboard
 - LEDs, Widerstände
@@ -45,15 +43,15 @@ Außerdem wirst du LEDs und LED-Streifen am ESP32 über dein Smartphone fernsteu
 
 
 <a id="vorbereitung"></a>
-## 00 Vorbereitung: Arduino IDE und VS Code/PlatformIO
+## 00. Vorbereitung: Arduino IDE und VS Code/PlatformIO
 
 - [00a Arduino IDE vorbereiten](challenge_00_arduino_ide.md)
 - [00b VS Code mit PlatformIO vorbereiten](challenge_00_vscode_platformio.md)
 
-
+---
 
 <a id="esp-now"></a>
-## 📡 ESP-NOW
+## 📡 01. ESPs direkt miteinander verbinden: ESP-NOW
 
 ESP-NOW ist ein Funkprotokoll für ESP32/ESP8266, das **ohne WLAN-Router** funktioniert.  
 Damit können mehrere ESP-Boards direkt kurze Nachrichten austauschen, z. B. Sensorwerte oder Schaltbefehle.  
@@ -76,15 +74,8 @@ Damit können mehrere ESP-Boards direkt kurze Nachrichten austauschen, z. B. Sen
 ---
 
 
-<a id="iot-client"></a>
-# Jetzt kann es losgehen: Der ESP32 als IoT Client - Schritt für Schritt
-1. 02: ESP32 mit dem WLAN verbinden und per mDNS benennen
-2. 03: ESP32 stellt einen Webserver zur Verfügung
-3. 04: ESP32 misst Sensordaten und stellt sie über seinen Webserver bereit
-4. 05: ESP32 empfängt Befehle und steuert Aktuatoren
-
 <a id="wlan-verbinden"></a>
-## 📅 02. Den ESP32 mit dem WLAN verbinden (inkl. mDNS)
+## 📶 02. Den ESP32 mit dem WLAN verbinden (inkl. mDNS)
 
 
 <table><tr><td width="600">
@@ -125,7 +116,7 @@ ping ESP-name.local
 ---
 
 <a id="webserver"></a>
-## 📅 03. Der ESP32 stellt einen Webserver zur Verfügung
+## 🌐 03. Der ESP32 stellt einen Webserver zur Verfügung
 
 Bis jetzt kan der ESP32 nur per Commandline und `ping` Befehl angesprochen werden.   
 Jetzt wollen wir den ESP32 über eine Browser wie  `Firefox` oder `Chrome` über seine URL ansprechen. Beispiel `http://esp-meinname/`
@@ -150,7 +141,7 @@ http://ESP-meinname/
 --- 
 
 <a id="sensoren"></a>
-## 📅 04. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen
+## 🌡️ 04. Temperatur und Luftfeuchtigkeit messen und im Browser anzeigen
 
 <table><tr><td width="600">
 <img src="zusatzmaterial/ESP32%20mit%20Temperatursensor%20im%20WLAN.png" alt="ESP32 als IoT Webserver" width="600">
@@ -191,7 +182,7 @@ Wird einer dieser beiden Endpoints vom Browser angefragt, liest der ESP32 zunäc
 
 
 <a id="aktuatoren"></a>
-## 05. Der ESP32 empfängt Befehle vom Client und steuert Aktuatoren
+## 💡 05. Der ESP32 empfängt Befehle vom Client und steuert Aktuatoren
 Es geht auch in die andere Richtung:  
 Der ESP kann nicht nur Daten vom Sensor lesen, sondern auch Ausgänge schalten.  
 
@@ -218,7 +209,7 @@ http://ESP-meinname/led_aus
 
 
 <a id="rgb-led"></a>
-## 06. Jetzt wird's bunt: RGB-LED mit dem Handy steuern
+## 🌈 06. Jetzt wird's bunt: RGB-LED mit dem Handy steuern
 
 
 In dieser Challenge steuerst du eine RGB-LED.
@@ -237,10 +228,10 @@ Du programmierst einen neuen Endpoint `/set_rgb`, der drei Parameter für die Fa
 
 [challenge_05_rgb_led.cpp](challenge_05_rgb_led.cpp)
 
-
+---
 
 <a id="esp32-devkit"></a>
-### ESP32 Devkit
+## ESP32 Devkit
 Es gibt das ESP32 Devkit in 2 Layout Versionen:
 
 <table><tr><td width="600">
@@ -253,9 +244,6 @@ Es gibt das ESP32 Devkit in 2 Layout Versionen:
 <br><em>ESP32 DevKitC v3 und v4 Pinlayout (2×19 Pin)</em>
 </td></tr></table>
 
-<a id="arduino-ide-esp32"></a>
-### Erweitern der Arduino IDE für den ESP32
-▶️ [YouTube: Arduino IDE und ESP32](https://youtu.be/RbEGBOytZzc?si=KouAGV5stZRRLF-T)
 
 <a id="zusaetzliche-informationen"></a>
 ## ℹ️ Zusätzliche Informationen
