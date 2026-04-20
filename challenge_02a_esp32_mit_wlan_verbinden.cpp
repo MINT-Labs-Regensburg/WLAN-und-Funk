@@ -1,5 +1,5 @@
 /*
-Challenge 01a : ESP32 mit WLAN verbinden
+Challenge 02a : ESP32 mit WLAN verbinden
 ========================================
 Ziel:
 Schreibe ein Programm, das den ESP32 im WLAN anmeldet.

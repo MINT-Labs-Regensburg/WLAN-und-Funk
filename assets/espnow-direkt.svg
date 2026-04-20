@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-label="ESP-NOW Direktverbindung ohne Router">
+  <defs>
+    <style>
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #3f4a5a; }
+      .label { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #3f4a5a; }
+      .small { font: 600 32px 'Segoe UI', Arial, sans-serif; fill: #3f4a5a; }
+      .pill { font: 700 38px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .mono { font: 700 38px 'Consolas', 'Courier New', monospace; fill: #ffffff; }
+      .muted { fill: #8d949f; }
+      .blue { fill: #4f86c6; }
+      .board { fill: #404b5b; }
+      .chip { fill: #d8dde4; }
+      .pin { fill: #cfd3d9; }
+      .bg { fill: #ebebeb; }
+      .wifi { fill: none; stroke: #4f86c6; stroke-width: 10; stroke-linecap: round; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#8d949f" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1536" height="1024" class="bg"/>
+
+  <text x="768" y="110" text-anchor="middle" class="title">ESP-NOW: Direkt von Board zu Board (ohne WLAN Router)</text>
+
+  <!-- Left ESP32 board -->
+  <g transform="translate(210,280)">
+    <rect x="-70" y="0" width="140" height="190" rx="14" class="board"/>
+    <rect x="-44" y="38" width="88" height="88" rx="5" class="chip"/>
+    <rect x="-32" y="138" width="64" height="30" rx="3" class="pin"/>
+    <circle cx="-58" cy="16" r="5" class="pin"/>
+    <circle cx="58" cy="16" r="5" class="pin"/>
+    <g fill="#cfd3d9">
+      <circle cx="-62" cy="55" r="3"/><circle cx="-62" cy="71" r="3"/><circle cx="-62" cy="87" r="3"/><circle cx="-62" cy="103" r="3"/><circle cx="-62" cy="119" r="3"/>
+      <circle cx="62" cy="55" r="3"/><circle cx="62" cy="71" r="3"/><circle cx="62" cy="87" r="3"/><circle cx="62" cy="103" r="3"/><circle cx="62" cy="119" r="3"/>
+    </g>
+    <path d="M58 4 q20 8 20 28" class="wifi"/>
+    <path d="M58 -8 q34 12 34 40" class="wifi"/>
+    <path d="M58 -22 q48 16 48 56" class="wifi"/>
+  </g>
+  <text x="210" y="548" text-anchor="middle" class="label">ESP32 Sender</text>
+
+  <!-- Right ESP32 board -->
+  <g transform="translate(1326,280)">
+    <rect x="-70" y="0" width="140" height="190" rx="14" class="board"/>
+    <rect x="-44" y="38" width="88" height="88" rx="5" class="chip"/>
+    <rect x="-32" y="138" width="64" height="30" rx="3" class="pin"/>
+    <circle cx="-58" cy="16" r="5" class="pin"/>
+    <circle cx="58" cy="16" r="5" class="pin"/>
+    <g fill="#cfd3d9">
+      <circle cx="-62" cy="55" r="3"/><circle cx="-62" cy="71" r="3"/><circle cx="-62" cy="87" r="3"/><circle cx="-62" cy="103" r="3"/><circle cx="-62" cy="119" r="3"/>
+      <circle cx="62" cy="55" r="3"/><circle cx="62" cy="71" r="3"/><circle cx="62" cy="87" r="3"/><circle cx="62" cy="103" r="3"/><circle cx="62" cy="119" r="3"/>
+    </g>
+    <path d="M-58 4 q-20 8 -20 28" class="wifi"/>
+    <path d="M-58 -8 q-34 12 -34 40" class="wifi"/>
+    <path d="M-58 -22 q-48 16 -48 56" class="wifi"/>
+  </g>
+  <text x="1326" y="548" text-anchor="middle" class="label">ESP32 Empfaenger</text>
+
+  <!-- Middle direct link / no router -->
+  <line x1="360" y1="400" x2="760" y2="400" stroke="#8d949f" stroke-width="12" marker-end="url(#arrow)"/>
+  <line x1="1176" y1="400" x2="776" y2="400" stroke="#8d949f" stroke-width="12" marker-end="url(#arrow)"/>
+
+  <g transform="translate(768,372)">
+    <rect x="-170" y="-52" width="340" height="110" rx="20" fill="#dfe3e8" stroke="#c8cdd4" stroke-width="3"/>
+    <text x="0" y="-8" text-anchor="middle" class="small">Direktverbindung</text>
+    <text x="0" y="36" text-anchor="middle" class="small">ohne Router</text>
+  </g>
+
+  <!-- Bottom pills -->
+  <g>
+    <rect x="70" y="700" width="420" height="112" rx="56" class="blue"/>
+    <text x="280" y="774" text-anchor="middle" class="pill">ESP-NOW starten</text>
+
+    <rect x="558" y="700" width="420" height="112" rx="56" class="blue"/>
+    <text x="768" y="774" text-anchor="middle" class="pill">Peer-MAC eintragen</text>
+
+    <rect x="1046" y="700" width="420" height="112" rx="56" class="blue"/>
+    <text x="1256" y="774" text-anchor="middle" class="mono">send / recv</text>
+  </g>
+</svg>

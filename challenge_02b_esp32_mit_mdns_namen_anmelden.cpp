@@ -1,11 +1,11 @@
 /*
-Challenge 01b : ESP32 mit mDNS Namen anmelden
+Challenge 02b : ESP32 mit mDNS Namen anmelden
 =============================================
 Ziel:
 Erweitere das Programm so, dass der ESP32 im WLAN angemeldet wird und ihm ein mDNS Name zugewiesen wird.
 
 
-Erweitere das Programm aus Challenge 01a mit folgenden Schritten:
+Erweitere das Programm aus Challenge 02a mit folgenden Schritten:
 ----------------------------------------------------------------
 
 - #include <ESPmDNS.h> 

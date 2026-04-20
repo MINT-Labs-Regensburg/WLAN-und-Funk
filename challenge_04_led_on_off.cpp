@@ -5,7 +5,7 @@ Ziel: Der ESP32 empfängt Kommandos vom Browser und
 schaltet eine LED ein oder aus.
 
 Schritte:
-1. Kopiere als Basis deinen Code aus challenge_03_dht_sensordaten_im_webserver_anzeigen.cpp.
+1. Kopiere als Basis deinen Code aus challenge_04_dht_sensordaten_im_webserver_anzeigen.cpp.
 2. Definiere den Pin, an dem die LED angeschlossen ist (z.B. GPIO 12).
 3. Setze den Pin im setup() als OUTPUT.
    pinMode(12, OUTPUT);
