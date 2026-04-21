@@ -41,7 +41,7 @@ void setup()
     // Starte den WiFi in Station-Modus
     WiFi.STA.begin();
     // Zur Information: Die MAC-Adresse des ESP32 wird hier ausgegeben, damit du sie für den Sender verwenden kannst
-    Serial.print("My MAC: ");
+    Serial.print("Receiver MAC: ");
     Serial.println(WiFi.macAddress());
 
     // Initialiere ESP-NOW
