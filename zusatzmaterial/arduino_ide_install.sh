@@ -1,7 +1,4 @@
-Download appimage from arduino.cc/en/software
-
-
-
+# Download appimage from arduino.cc/en/software
 
 
 # 1. Create Applications and icons folder
