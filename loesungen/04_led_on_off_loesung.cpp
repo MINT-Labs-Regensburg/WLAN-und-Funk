@@ -4,7 +4,7 @@
 
 
 const char *ssid = "MINT-Labs";
-const char *password = "int3rn3tofthings";
+const char *password = "mintlabspassword";
 
 const char *espname = "ESP-meiner";  // Mein ESP32 Name
 

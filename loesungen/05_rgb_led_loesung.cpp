@@ -9,7 +9,7 @@ Ziel: Die Farbe einer RGB-LED kann live über den Browser eingestellt werden.
 #include <WebServer.h>
 #include <WiFi.h>
 const char *ssid = "MINT-Labs";
-const char *password = "int3rn3tofthings";
+const char *password = "mintlabspassword";
 
 const char *espname = "ESP-meiner";  // Mein ESP32 Name
 
