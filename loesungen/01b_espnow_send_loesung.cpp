@@ -36,8 +36,9 @@ void setup()
 
 void loop()
 {
-  esp_now_send(empfaengerMac, (const uint8_t *)"hello von Peter", sizeof("hello von Peter"));
-  Serial.println("hello von Peter gesendet");
+  const uint8_t nachricht[] = "hello von Peter";
+  esp_now_send(empfaengerMac, nachricht, sizeof(nachricht));
+
 
   delay(1000);
 }
